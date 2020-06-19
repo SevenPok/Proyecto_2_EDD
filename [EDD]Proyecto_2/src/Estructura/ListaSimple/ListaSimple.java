@@ -12,6 +12,22 @@ public class ListaSimple<T extends Comparable<T>> {
         this.size = 0;
     }
 
+    public Nodo<T> getHead() {
+        return head;
+    }
+
+    public void setHead(Nodo<T> head) {
+        this.head = head;
+    }
+
+    public Nodo<T> getEnd() {
+        return end;
+    }
+
+    public void setEnd(Nodo<T> end) {
+        this.end = end;
+    }
+
     public boolean isEmpty() {
         return size == 0;
     }
@@ -59,7 +75,7 @@ public class ListaSimple<T extends Comparable<T>> {
     public boolean remove(T data) {
         int delete = searchIndex(data);
         if (delete >= 0) {
-            
+
         }
         return false;
     }
