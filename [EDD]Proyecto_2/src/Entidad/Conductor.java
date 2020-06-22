@@ -2,27 +2,32 @@ package Entidad;
 
 public class Conductor implements Comparable<Conductor> {
 
-    private String dpi;
+    private int dpi;
     private String nombre;
     private String apellido;
-    private String genero;
-    private String direccion;
     private String tipoLicencia;
+    private String genero;
+    private String fechaNac;
+    private String telefono;
+    private String direccion;
 
-    public Conductor(String dpi, String nombre, String apellido, String genero, String direccion, String tipoLicencia) {
+    public Conductor(int dpi, String nombre, String apellido, String tipoLicencia, String genero, String fechaNac, String telefono, String direccion) {
         this.dpi = dpi;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.genero = genero;
-        this.direccion = direccion;
         this.tipoLicencia = tipoLicencia;
+        this.genero = genero;
+        this.fechaNac = fechaNac;
+        this.telefono = telefono;
+        this.direccion = direccion;
+
     }
 
-    public String getDpi() {
+    public int getDpi() {
         return dpi;
     }
 
-    public void setDpi(String dpi) {
+    public void setDpi(int dpi) {
         this.dpi = dpi;
     }
 
@@ -66,17 +71,34 @@ public class Conductor implements Comparable<Conductor> {
         this.tipoLicencia = tipoLicencia;
     }
 
+    public String getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(String fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
     public String toString() {
-        return "DPI: " + dpi + "\nNombres: " + nombre + "\nApellidos: " + apellido + "\nTipo de licencia: " + tipoLicencia + "\nGenero: " + genero + "\nDireccion: " + direccion
+        return "DPI: " + dpi + "\nNombres: " + nombre + "\nApellidos: " + apellido + "\nTipo de licencia: " + tipoLicencia + "\nGenero: " + genero
+                + "\nFecha de nacimiento: " + fechaNac + "\nTelefono: " + telefono + "\nDireccion: " + direccion
                 + "\n--------------------------------------";
     }
 
     @Override
     public int compareTo(Conductor o) {
-        if (o.getDpi().compareToIgnoreCase(this.dpi) == 0) {
+        if (o.getDpi() == this.dpi) {
             return 0;
-        } else if (o.getDpi().compareToIgnoreCase(this.dpi) > 0) {
+        } else if (o.getDpi() > this.dpi) {
             return 1;
         } else {
             return -1;

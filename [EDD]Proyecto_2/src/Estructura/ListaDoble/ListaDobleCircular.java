@@ -72,7 +72,7 @@ public class ListaDobleCircular<T extends Comparable<T>> {
         }
     }
 
-    public void remove(T data) {
+    public boolean remove(T data) {
         Nodo<T> value = search(data);
         if (value != null) {
             if (size == 1) {
@@ -91,7 +91,9 @@ public class ListaDobleCircular<T extends Comparable<T>> {
                 value.getNext().setBack(value.getBack());
             }
             size--;
+            return true;
         }
+        return false;
     }
 
     public Nodo<T> search(T data) {

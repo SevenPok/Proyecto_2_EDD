@@ -2,13 +2,13 @@ package Entidad;
 
 public class Cliente implements Comparable<Cliente> {
 
-    private String dpi;
+    private int dpi;
     private String nombre;
     private String apellido;
     private String genero;
     private String direccion;
 
-    public Cliente(String dpi, String nombre, String apellido, String genero, String direccion) {
+    public Cliente(int dpi, String nombre, String apellido, String genero, String direccion) {
         this.dpi = dpi;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -16,11 +16,11 @@ public class Cliente implements Comparable<Cliente> {
         this.direccion = direccion;
     }
 
-    public String getDpi() {
+    public int getDpi() {
         return dpi;
     }
 
-    public void setDpi(String dpi) {
+    public void setDpi(int dpi) {
         this.dpi = dpi;
     }
 
@@ -64,9 +64,9 @@ public class Cliente implements Comparable<Cliente> {
 
     @Override
     public int compareTo(Cliente o) {
-        if (o.getDpi().compareToIgnoreCase(this.dpi) == 0) {
+        if (o.getDpi() == this.dpi) {
             return 0;
-        } else if (o.getDpi().compareToIgnoreCase(this.dpi) > 0) {
+        } else if (o.getDpi() > this.dpi) {
             return 1;
         } else {
             return -1;
