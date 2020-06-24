@@ -1,0 +1,21 @@
+digraph G {
+
+rankdir=LR size="8,5"
+	node [shape=circle]
+"Oviedo"
+"Oviedo"->"Bilbao"[dir=none label="304"]
+"Bilbao"
+"Bilbao"->"Zaragoza"[dir=none label="324"]
+"Bilbao"->"Madrid"[dir=none label="395"]
+"Bilbao"->"Valladolid"[dir=none label="280"]
+"Zaragoza"
+"Zaragoza"->"Barcelona"[dir=none label="296"]
+"Zaragoza"->"Madrid"[dir=none label="325"]
+"Madrid"
+"Valladolid"
+"Barcelona"
+"Barcelona"->"Gerona"[dir=none label="100"]
+"Gerona"
+
+
+}

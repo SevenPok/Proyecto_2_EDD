@@ -19,12 +19,30 @@ public class BTree<T extends Comparable<T>> {
         System.out.println();
     }
 
-    public Nodo search(T data) {
+    public void graficar() {
+        if (this.root != null) {
+            this.root.graficar(1);
+        }
+    }
+
+    public Nodo<T> searchTree(T data) {
         if (this.root == null) {
             return null;
         } else {
             return this.root.search(data);
         }
+    }
+
+    public T search(T data) {
+        Nodo<T> aux = searchTree(data);
+        if (aux != null) {
+            for (int i = 0; i < aux.n; i++) {
+                if (aux.keys[i].compareTo(data) == 0) {
+                    return aux.keys[i];
+                }
+            }
+        }
+        return null;
     }
 
     public void insert(T data) {
@@ -73,21 +91,19 @@ public class BTree<T extends Comparable<T>> {
         Cliente c4 = new Cliente(8, "Bruno David", "Colindres Monterroso", "Masculino", "6ta calle 1-53");
 
         BTree<Integer> t = new BTree(2);
-        t.insert(10);
-        t.insert(5);
         t.insert(1);
-        t.insert(8);
-        t.insert(50);
-        t.insert(33);
         t.insert(2);
-        t.insert(15);
-        t.insert(20);
-        t.insert(30);
-        t.insert(11);
-        t.insert(12);
-        t.insert(13);
-        t.insert(14);
+        t.insert(3);
+        t.insert(4);
+        t.insert(5);
+        t.insert(6);
+        t.insert(7);
+        t.insert(8);
+        t.insert(9);
+        t.insert(10);
 
-        t.traverse();
+
+        t.graficar();
+
     }
 }

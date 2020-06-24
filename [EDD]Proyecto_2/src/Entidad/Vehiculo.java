@@ -6,14 +6,16 @@ public class Vehiculo implements Comparable<Vehiculo> {
     private String marca;
     private String modelo;
     private int anio;
-    private float precio;
+    private String color;
+    private String precio;
     private String tipoCaja;
 
-    public Vehiculo(String placa, String marca, String modelo, int anio, float precio, String tipoCaja) {
+    public Vehiculo(String placa, String marca, String modelo, int anio, String color, String precio, String tipoCaja) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
         this.anio = anio;
+        this.color = color;
         this.precio = precio;
         this.tipoCaja = tipoCaja;
     }
@@ -50,11 +52,11 @@ public class Vehiculo implements Comparable<Vehiculo> {
         this.anio = anio;
     }
 
-    public float getPrecio() {
+    public String getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(String precio) {
         this.precio = precio;
     }
 
@@ -66,9 +68,17 @@ public class Vehiculo implements Comparable<Vehiculo> {
         this.tipoCaja = tipoCaja;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
-        return "Placa: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nAño: " + "Precio: Q " + precio + "\nTipo de caja: " + tipoCaja
+        return "Placa: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio + "\nColor: " + color + "\nPrecio: Q " + precio + "\nTipo de caja: " + tipoCaja
                 + "\n--------------------------------------";
     }
 

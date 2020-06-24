@@ -32,6 +32,26 @@ public class Nodo<T extends Comparable<T>> {
         }
     }
 
+    public String graficar(int id) {
+        int i = 0;
+        String cadena = id + "[";
+        for (i = 0; i < this.n; i++) {
+
+            if (this.leaf == false) {
+                children[i].graficar(id++);
+            }
+
+            cadena += "|" + keys[i];
+
+        }
+        cadena += "|]\n";
+        System.out.println(cadena);
+        if (leaf == false) {
+            children[i].graficar(id++);
+        }
+        return cadena;
+    }
+
     public Nodo<T> search(T data) {
 
         int i = 0;
@@ -65,7 +85,7 @@ public class Nodo<T extends Comparable<T>> {
             while (i >= 0 && keys[i].compareTo(data) > 0) {
                 i--;
             }
-            if (children[i + 1].n == 2 * t - 1) {
+            if (children[i + 1].n == (2 * t - 1)) {
                 splitChild(i + 1, children[i + 1]);
                 if (keys[i + 1].compareTo(data) < 0) {
                     i++;
@@ -89,13 +109,13 @@ public class Nodo<T extends Comparable<T>> {
         }
         node.n = t - 1;
 
-        for (int j = n; j >= index + 1; j--) {
+        for (int j = n; j >= (index + 1); j--) {
             children[j + 1] = children[j];
         }
 
         children[index + 1] = aux;
 
-        for (int j = n - 1; j >= index; j--) {
+        for (int j = (n - 1); j >= index; j--) {
             keys[j + 1] = keys[j];
         }
 
@@ -122,7 +142,7 @@ public class Nodo<T extends Comparable<T>> {
             }
         } else {
             if (leaf) {
-                System.out.println("Le data" + data.toString() + "\nNo existe");
+                System.out.println("el dato " + data.toString() + "\nNo existe");
                 return;
             }
             boolean flag = ((index == n) ? true : false);

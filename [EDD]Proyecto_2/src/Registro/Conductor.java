@@ -64,7 +64,7 @@ public class Conductor {
                 String[] cadena = linea.split(";");
                 String[] data = cadena[0].split("%");
                 try {
-                    Conductor.getRegistro().add(new Entidad.Conductor(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
+                    add(new Entidad.Conductor(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
                 } catch (NumberFormatException e) {
                 }
             }

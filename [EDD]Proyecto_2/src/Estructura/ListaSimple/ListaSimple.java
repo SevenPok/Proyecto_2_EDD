@@ -1,6 +1,8 @@
 package Estructura.ListaSimple;
 
-public class ListaSimple<T extends Comparable<T>> {
+import java.util.Iterator;
+
+public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
 
     private Nodo<T> head;
     private Nodo<T> end;
@@ -59,12 +61,12 @@ public class ListaSimple<T extends Comparable<T>> {
         }
     }
 
-    public T search(T data) {
+    public Nodo<T> search(T data) {
         if (!isEmpty()) {
             Nodo<T> aux = head;
             while (aux != null) {
                 if (aux.getData().compareTo(data) == 0) {
-                    return aux.getData();
+                    return aux;
                 }
                 aux = aux.getNext();
             }
@@ -72,12 +74,74 @@ public class ListaSimple<T extends Comparable<T>> {
         return null;
     }
 
-    public boolean remove(T data) {
-        int delete = searchIndex(data);
-        if (delete >= 0) {
+    public Nodo<T> search(int index) {
+        if (isEmpty() || (index < 0 || index >= size)) {
+            return null;
+        } else if (index == 0) {
+            return head;
+        } else if (index == size - 1) {
+            return end;
+        } else {
+
+            Nodo<T> aux = head;
+            for (int i = 0; i < index; i++) {
+                aux = aux.getNext();
+            }
+            return aux;
 
         }
-        return false;
+    }
+
+    public void removeLast() {
+        if (isEmpty()) {
+            System.out.println("Esta vacia");
+        } else {
+            if (head != end) {
+                Nodo<T> aux = head;
+                while (aux.getNext() != end) {
+                    aux = aux.getNext();
+                }
+                end = aux;
+                end.setNext(null);
+            } else {
+                head = end = null;
+            }
+            size--;
+        }
+    }
+
+    public void removeFirst() {
+        if (isEmpty()) {
+            System.out.println("Esta vacia");
+        } else {
+            Nodo<T> aux = head.getNext();
+            head = null;
+            head = aux;
+            if (size == 1) {
+                end = null;
+            }
+            size--;
+        }
+    }
+
+    public boolean remove(int index) {
+        if (isEmpty() || (index < 0 || index >= size)) {
+            return false;
+        } else if (index == 0) {
+            removeFirst();
+            return true;
+        } else if (index == size - 1) {
+            removeLast();
+            return true;
+        } else {
+            Nodo<T> aux = head;
+            for (int i = 0; i < index - 1; i++) {
+                aux = aux.getNext();
+            }
+            aux.setNext(aux.getNext().getNext());
+            size--;
+            return true;
+        }
     }
 
     private int searchIndex(T data) {
@@ -106,4 +170,40 @@ public class ListaSimple<T extends Comparable<T>> {
             }
         }
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new MyIterator<ListaSimple>();
+    }
+
+    private class MyIterator<ListaSimple> implements Iterator<T> {
+
+        private int next;
+
+        @Override
+        public boolean hasNext() {
+            return search(next) != null;
+        }
+
+        @Override
+        public T next() {
+            T data = search(next).getData();
+            next++;
+            return data;
+        }
+
+    }
+
+    public static void main(String[] args) {
+        ListaSimple<Integer> lista = new ListaSimple<>();
+        lista.addLast(1);
+        lista.addLast(2);
+        lista.addLast(3);
+        lista.addLast(4);
+        lista.addLast(5);
+        for (int i : lista) {
+            System.out.println(i);
+        }
+    }
+
 }
