@@ -10,7 +10,7 @@ public class Vehiculo {
     private BTree<Entidad.Vehiculo> vehiculo;
 
     private Vehiculo() {
-        vehiculo = new BTree<>(4);
+        vehiculo = new BTree<>(3);
     }
 
     public static Vehiculo getRegistro() {
@@ -76,5 +76,9 @@ public class Vehiculo {
 
     public void show() {
         vehiculo.traverse();
+    }
+
+    public void graficar() {
+        vehiculo.graficar();
     }
 }

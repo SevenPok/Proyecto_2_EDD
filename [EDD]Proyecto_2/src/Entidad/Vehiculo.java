@@ -78,15 +78,19 @@ public class Vehiculo implements Comparable<Vehiculo> {
 
     @Override
     public String toString() {
+        return "Placa: " + placa;
+    }
+
+    public String toString2() {
         return "Placa: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio + "\nColor: " + color + "\nPrecio: Q " + precio + "\nTipo de caja: " + tipoCaja
                 + "\n--------------------------------------";
     }
 
     @Override
     public int compareTo(Vehiculo o) {
-        if (o.getPlaca().compareToIgnoreCase(this.placa) == 0) {
+        if (this.placa.compareToIgnoreCase(o.getPlaca()) == 0) {
             return 0;
-        } else if (o.getPlaca().compareToIgnoreCase(this.placa) > 0) {
+        } else if (this.placa.compareToIgnoreCase(o.getPlaca()) > 0) {
             return 1;
         } else {
             return -1;

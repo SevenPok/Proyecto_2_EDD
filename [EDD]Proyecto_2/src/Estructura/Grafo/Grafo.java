@@ -2,8 +2,8 @@ package Estructura.Grafo;
 
 import Estructura.ListaSimple.Cola;
 import Estructura.ListaSimple.ListaSimple;
+import Estructura.ListaSimple.Nodo;
 import Estructura.ListaSimple.Pila;
-import javafx.util.Pair;
 
 public class Grafo {
 
@@ -116,7 +116,8 @@ public class Grafo {
     }
 
     public String graficaRutas() {
-        String cadena = "rankdir=LR size=\"8,5\"\n"
+        String cadena = "graph [ dpi = 300 ];\n";
+        cadena += "rankdir=LR size=\"8,5\"\n"
                 + "	node [shape=circle]\n";
         Vertice auxVertice = root;
         Arista auxArista;
@@ -229,11 +230,88 @@ public class Grafo {
         }
     }
 
-    public void primeroMejor(Vertice origen, Vertice destino) {
-        Pair<Vertice, Integer> VerticeCosto;
+    public boolean comparacion(VerticeCosto a, VerticeCosto b) {
+        return a.getCosto() < b.getCosto();
     }
 
-    public boolean Comparacion(Pair<Vertice, Integer> a, Pair<Vertice, Integer> b) {
-        return a.getValue() < b.getValue();
+    public void rutaMasCorta(Vertice origen, Vertice destino) {
+        ListaSimple<String> ruta = new ListaSimple<>();
+        int CostoActual = 0;
+        Vertice VerticeActual, destinoActual = null;
+        Arista aux;
+        int band, band2 = 0;
+        ListaSimple<VerticeCosto> listaCosto = new ListaSimple<>();
+        ListaSimple<VerticeCosto> listaOrdenada = new ListaSimple<>();
+        Pila<VerticeVertice> pila = new Pila<>();
+
+        listaCosto.addLast(new VerticeCosto(origen, 0));
+        listaOrdenada.addLast(new VerticeCosto(origen, 0));
+        while (!listaOrdenada.isEmpty()) {
+            VerticeActual = listaOrdenada.getHead().getData().getVertice();
+            CostoActual = listaOrdenada.getHead().getData().getCosto();
+            listaOrdenada.removeFirst();
+
+            if (VerticeActual == destino) {
+                System.out.println("Costo: " + CostoActual);
+                band2 = 1;
+                destinoActual = destino;
+                while (!pila.isEmpty()) {
+                    System.out.print(destinoActual.nombre + "<-");
+                    ruta.addFirst(destinoActual.nombre);
+                    while (!pila.isEmpty() && pila.top().getDestino() != destinoActual) {
+                        pila.pop();
+                    }
+                    if (!pila.isEmpty()) {
+                        destinoActual = pila.top().getOrigen();
+                    }
+                }
+                break;
+            }
+            aux = VerticeActual.adjacent;
+            while (aux != null) {
+                band = 0;
+                CostoActual = CostoActual + aux.peso;
+                for (VerticeCosto i : listaCosto) {
+                    if (aux.adjacent == i.getVertice()) {
+                        band = 1;
+                        if (CostoActual < i.getCosto()) {
+                            i.setCosto(CostoActual);
+                            for (VerticeCosto j : listaOrdenada) {
+                                if (j.getVertice() == aux.adjacent) {
+                                    j.setCosto(CostoActual);
+                                }
+                            }
+                            listaOrdenada.ordenar();
+                            pila.push(new VerticeVertice(VerticeActual, aux.adjacent));
+                            CostoActual = CostoActual - aux.peso;
+                        }
+                    }
+                }
+                if (band == 0) {
+                    listaCosto.addLast(new VerticeCosto(aux.adjacent, CostoActual));
+                    listaOrdenada.addLast(new VerticeCosto(aux.adjacent, CostoActual));
+                    listaOrdenada.ordenar();
+                    pila.push(new VerticeVertice(VerticeActual, aux.adjacent));
+                    CostoActual = CostoActual - aux.peso;
+                }
+                aux = aux.next;
+            }
+        }
+        System.out.println("");
+        if (band2 == 0) {
+            System.out.println("No encontro la ruta");
+        } else {
+            Estructura.ListaSimple.Nodo<String> temporal = ruta.getHead();
+            while (temporal != null) {
+                if (temporal.getNext() != null) {
+                    System.out.print(temporal.getData() + "->");
+                } else {
+                    System.out.print(temporal.getData());
+                }
+                temporal = temporal.getNext();
+            }
+            System.out.println("");
+        }
+
     }
 }

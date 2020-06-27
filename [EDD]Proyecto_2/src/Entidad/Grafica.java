@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 
 public class Grafica {
 
+    public static String cadena = "";
+
     public static void graficar(String cadena, String nombre) {
         String archivo = nombre + ".dot";
         try {
@@ -35,4 +37,5 @@ public class Grafica {
             System.out.println(ioe);
         }
     }
+
 }

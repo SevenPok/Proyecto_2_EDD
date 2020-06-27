@@ -61,7 +61,7 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
         }
     }
 
-    public Nodo<T> search(T data) {
+    public Nodo<T> buscar(T data) {
         if (!isEmpty()) {
             Nodo<T> aux = head;
             while (aux != null) {
@@ -92,47 +92,52 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
         }
     }
 
-    public void removeLast() {
+    public T removeLast() {
         if (isEmpty()) {
-            System.out.println("Esta vacia");
+            return null;
         } else {
+            Nodo<T> delete = end;
             if (head != end) {
                 Nodo<T> aux = head;
+
                 while (aux.getNext() != end) {
                     aux = aux.getNext();
                 }
                 end = aux;
                 end.setNext(null);
+
             } else {
                 head = end = null;
             }
             size--;
+            return delete.getData();
         }
     }
 
-    public void removeFirst() {
+    public T removeFirst() {
         if (isEmpty()) {
-            System.out.println("Esta vacia");
+            return null;
         } else {
             Nodo<T> aux = head.getNext();
+            Nodo<T> delete = head;
             head = null;
             head = aux;
             if (size == 1) {
                 end = null;
             }
             size--;
+            return delete.getData();
         }
     }
 
-    public boolean remove(int index) {
+    public T remove(int index) {
         if (isEmpty() || (index < 0 || index >= size)) {
-            return false;
+            return null;
         } else if (index == 0) {
-            removeFirst();
-            return true;
+            return removeFirst();
         } else if (index == size - 1) {
-            removeLast();
-            return true;
+            return removeLast();
+
         } else {
             Nodo<T> aux = head;
             for (int i = 0; i < index - 1; i++) {
@@ -140,7 +145,26 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
             }
             aux.setNext(aux.getNext().getNext());
             size--;
-            return true;
+            return aux.getData();
+        }
+    }
+
+    public T add(T data, int index) {
+        if (index == 0) {
+            addFirst(data);
+            return head.getData();
+        } else if (index == size) {
+            addLast(data);
+            return end.getData();
+        } else if (index < 0 || index >= size) {
+            return null;
+        } else {
+            Nodo<T> back = search(index - 1);
+            Nodo<T> actual = search(index);
+            Nodo<T> aux = new Nodo<>(data, actual);
+            back.setNext(aux);
+            size++;
+            return search(index).getData();
         }
     }
 
@@ -171,6 +195,44 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
         }
     }
 
+    public void ordenar() {
+        Nodo<T> aux = head;
+        Nodo<T> aux2 = null;
+        T dato = null;
+        while (aux != null) {
+            aux2 = head;
+            while (aux2 != null) {
+                if (aux.getData().compareTo(aux2.getData()) > 0) {
+                    dato = aux.getData();
+                    aux.setData(aux2.getData());
+                    aux2.setData(dato);
+                }
+                aux2 = aux2.getNext();
+            }
+            aux = aux.getNext();
+        }
+
+    }
+
+    public void sort() {
+        Nodo<T> aux = head;
+        Nodo<T> aux2 = null;
+        T dato = null;
+        while (aux != null) {
+            aux2 = head;
+            while (aux2 != null) {
+                if (aux2.getData().compareTo(aux.getData()) > 0) {
+                    dato = aux.getData();
+                    aux.setData(aux2.getData());
+                    aux2.setData(dato);
+                }
+                aux2 = aux2.getNext();
+            }
+            aux = aux.getNext();
+        }
+
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new MyIterator<ListaSimple>();
@@ -196,14 +258,13 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
 
     public static void main(String[] args) {
         ListaSimple<Integer> lista = new ListaSimple<>();
-        lista.addLast(1);
-        lista.addLast(2);
-        lista.addLast(3);
         lista.addLast(4);
         lista.addLast(5);
-        for (int i : lista) {
-            System.out.println(i);
-        }
+        lista.addLast(6);
+        lista.addLast(7);
+        lista.addLast(8);
+
+        lista.showConsole();
     }
 
 }

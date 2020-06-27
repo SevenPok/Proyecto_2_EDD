@@ -74,4 +74,8 @@ public class Ruta {
         this.ruta.recorridoProfundidad(this.ruta.getVertice(vertice));
         System.out.println("");
     }
+    
+    public void rutaMasCorta(String origen, String destino){
+        this.ruta.rutaMasCorta(ruta.getVertice(origen), ruta.getVertice(destino));
+    }
 }

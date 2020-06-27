@@ -25,14 +25,14 @@ public class Pila<T extends Comparable<T>> extends ListaSimple<T> {
     }
 
     public T top() {
-        return super.getHead().getData();
+        return super.getEnd().getData();
     }
 
     @Override
     public void showConsole() {
         super.showConsole(); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public static void main(String[] args) {
         Pila<Integer> pila = new Pila<>();
         pila.push(1);

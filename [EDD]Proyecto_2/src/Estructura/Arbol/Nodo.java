@@ -1,5 +1,7 @@
 package Estructura.Arbol;
 
+import Entidad.Grafica;
+
 public class Nodo<T extends Comparable<T>> {
 
     public T[] keys;
@@ -32,23 +34,36 @@ public class Nodo<T extends Comparable<T>> {
         }
     }
 
-    public String graficar(int id) {
+    public String graficar(String padre) {
         int i = 0;
-        String cadena = id + "[";
-        for (i = 0; i < this.n; i++) {
+        String cadena = padre + "->" + Integer.toString(this.keys.hashCode());
 
+        //System.out.println(graficarLabel(this));
+        Grafica.cadena += graficarLabel(this);
+        for (i = 0; i < this.n; i++) {
+            //cadena += "|" + keys[i];
             if (this.leaf == false) {
-                children[i].graficar(id++);
+                padre = Integer.toString(this.keys.hashCode());
+                children[i].graficar(padre);
             }
 
-            cadena += "|" + keys[i];
-
         }
-        cadena += "|]\n";
-        System.out.println(cadena);
+        cadena += "\n";
+        //System.out.println(cadena);
+        Grafica.cadena += cadena;
         if (leaf == false) {
-            children[i].graficar(id++);
+            children[i].graficar(padre);
         }
+        return cadena;
+    }
+
+    public String graficarLabel(Nodo<T> nodo) {
+        int i = 0;
+        String cadena = Integer.toString(this.keys.hashCode()) + "[label=\"";
+        for (i = 0; i < this.n; i++) {
+            cadena += "|" + keys[i].toString();
+        }
+        cadena += "|\"]";
         return cadena;
     }
 
@@ -96,7 +111,7 @@ public class Nodo<T extends Comparable<T>> {
     }
 
     public void splitChild(int index, Nodo<T> node) {
-        Nodo aux = new Nodo(node.t, node.leaf);
+        Nodo<T> aux = new Nodo(node.t, node.leaf);
         aux.n = t - 1;
 
         for (int j = 0; j < t - 1; j++) {
@@ -287,4 +302,5 @@ public class Nodo<T extends Comparable<T>> {
         child.n += 1;
         sibling.n -= 1;
     }
+
 }

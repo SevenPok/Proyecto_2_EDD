@@ -1,6 +1,7 @@
 package Estructura.Arbol;
 
 import Entidad.Cliente;
+import Entidad.Grafica;
 
 public class BTree<T extends Comparable<T>> {
 
@@ -21,7 +22,25 @@ public class BTree<T extends Comparable<T>> {
 
     public void graficar() {
         if (this.root != null) {
-            this.root.graficar(1);
+            Grafica.cadena += "node[shape=record];\n" + "subgraph clusterBTree { \n"
+                    + "\n"
+                    + "	 node [shape=record];\n"
+                    + "node [style=filled];\n"
+                    + "node [fillcolor=\"#EEEEEE\"];\n"
+                    + "node [color=\"#8C8C8E\"];\n"
+                    + "edge [color=\"#31CEF0\"]; \n";
+            this.root.graficar("Vehiculos");
+            Grafica.cadena += "}";
+            Grafica.graficar(Grafica.cadena, "Vehiculos");
+            Grafica.cadena = "";
+            System.out.println(Grafica.cadena);
+        }
+
+    }
+
+    public void graficarLabel() {
+        if (this.root != null) {
+
         }
     }
 
@@ -84,26 +103,4 @@ public class BTree<T extends Comparable<T>> {
         }
     }
 
-    public static void main(String[] args) {
-        Cliente c1 = new Cliente(10, "Gerber David", "Colindres Monterroso", "Masculino", "6ta calle 1-53");
-        Cliente c2 = new Cliente(5, "Jose Pablo", "Colindres Monterroso", "Masculino", "6ta calle 1-53");
-        Cliente c3 = new Cliente(1, "Julio Alejandro", "Colindres Monterroso", "Masculino", "6ta calle 1-53");
-        Cliente c4 = new Cliente(8, "Bruno David", "Colindres Monterroso", "Masculino", "6ta calle 1-53");
-
-        BTree<Integer> t = new BTree(2);
-        t.insert(1);
-        t.insert(2);
-        t.insert(3);
-        t.insert(4);
-        t.insert(5);
-        t.insert(6);
-        t.insert(7);
-        t.insert(8);
-        t.insert(9);
-        t.insert(10);
-
-
-        t.graficar();
-
-    }
 }

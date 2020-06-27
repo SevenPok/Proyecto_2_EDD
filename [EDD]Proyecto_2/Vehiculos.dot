@@ -1,0 +1,34 @@
+digraph G {
+
+node[shape=record];
+subgraph clusterBTree { 
+
+	 node [shape=record];
+node [style=filled];
+node [fillcolor="#EEEEEE"];
+node [color="#8C8C8E"];
+edge [color="#31CEF0"]; 
+1160460865[label="|Placa: p17lAf17|Placa: p25lAf25|Placa: p35lAf35|Placa: p43lAf43|"]1247233941[label="|Placa: p11lAf11|Placa: p14lAf14|"]258952499[label="|Placa: asdppasda1|Placa: p0lAf0|Placa: p10lAf10|"]1247233941->258952499
+603742814[label="|Placa: p12lAf12|Placa: p13lAf13|"]1247233941->603742814
+1160460865->1247233941
+1067040082[label="|Placa: p15lAf15|Placa: p16lAf16|"]1247233941->1067040082
+1325547227[label="|Placa: p1lAf1|Placa: p22lAf22|"]980546781[label="|Placa: p18lAf18|Placa: p19lAf19|"]1325547227->980546781
+2061475679[label="|Placa: p20lAf20|Placa: p21lAf21|"]1325547227->2061475679
+1160460865->1325547227
+140435067[label="|Placa: p23lAf23|Placa: p24lAf24|"]1325547227->140435067
+1450495309[label="|Placa: p2lAf2|Placa: p32lAf32|"]1670782018[label="|Placa: p26lAf26|Placa: p27lAf27|Placa: p28lAf28|Placa: p29lAf29|"]1450495309->1670782018
+1706377736[label="|Placa: p30lAf30|Placa: p31lAf31|"]1450495309->1706377736
+1160460865->1450495309
+468121027[label="|Placa: p33lAf33|Placa: p34lAf34|"]1450495309->468121027
+1804094807[label="|Placa: p38lAf38|Placa: p40lAf40|"]951007336[label="|Placa: p36lAf36|Placa: p37lAf37|"]1804094807->951007336
+2001049719[label="|Placa: p39lAf39|Placa: p3lAf3|"]1804094807->2001049719
+1160460865->1804094807
+1528902577[label="|Placa: p41lAf41|Placa: p42lAf42|"]1804094807->1528902577
+Vehiculos->1160460865
+1927950199[label="|Placa: p46lAf46|Placa: p5lAf5|"]868693306[label="|Placa: p44lAf44|Placa: p45lAf45|"]1927950199->868693306
+1746572565[label="|Placa: p47lAf47|Placa: p48lAf48|Placa: p49lAf49|Placa: p4lAf4|"]1927950199->1746572565
+1160460865->1927950199
+989110044[label="|Placa: p6lAf6|Placa: p7lAf7|Placa: p8lAf8|Placa: p9lAf9|"]1927950199->989110044
+}
+
+}
