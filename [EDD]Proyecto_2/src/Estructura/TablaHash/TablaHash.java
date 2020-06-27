@@ -60,7 +60,25 @@ public class TablaHash {
         }
     }
     
-    
+    private void reHash(int tama){
+        tama=tama+37;
+        TablaHash Tablaaux = new TablaHash(tama);
+        for (int i = 0; i < tamanio; i++) {
+            ListaDoble aux=Tabla[i].lista;
+            ListaN temp = aux.first;
+            while(temp!=null){
+                Tablaaux.insertar(Tabla[i].ident, temp.dato);
+                temp=temp.nextt;
+            }
+        }
+        tamanio=tama;
+        numeroElementos=Tablaaux.numeroElementos;
+        factordeCarga=Tablaaux.factordeCarga;
+        //borrar tabla
+        Tabla=Tablaaux.Tabla;
+        
+        
+    }
     
     
     private ListaDoble getCliente(int dpi) {
@@ -73,4 +91,7 @@ public class TablaHash {
         }
         return null;
     }
+    
+    
+    
 }

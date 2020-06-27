@@ -11,7 +11,7 @@ import Entidad.Cliente;
  * @author Co
  */
 public class ListaN {
-    private Cliente dato;
+    public Cliente dato;
     public ListaN nextt,previous;
 
     public ListaN(Cliente dato) {
