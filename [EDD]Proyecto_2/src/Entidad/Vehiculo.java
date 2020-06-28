@@ -78,7 +78,7 @@ public class Vehiculo implements Comparable<Vehiculo> {
 
     @Override
     public String toString() {
-        return "Placa: " + placa;
+        return placa + "-" + marca + "-" + modelo + "-" + anio + "-" + color + "-" + precio + "-" + tipoCaja;
     }
 
     public String toString2() {

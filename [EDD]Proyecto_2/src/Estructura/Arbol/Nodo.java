@@ -1,6 +1,7 @@
 package Estructura.Arbol;
 
 import Entidad.Grafica;
+import javax.swing.table.DefaultTableModel;
 
 public class Nodo<T extends Comparable<T>> {
 
@@ -34,6 +35,21 @@ public class Nodo<T extends Comparable<T>> {
         }
     }
 
+    public void show(DefaultTableModel modelo) {
+        int i = 0;
+        for (i = 0; i < this.n; i++) {
+
+            if (this.leaf == false) {
+                children[i].show(modelo);
+            }
+            modelo.addRow(keys[i].toString().split("-"));
+        }
+
+        if (leaf == false) {
+            children[i].show(modelo);
+        }
+    }
+
     public String graficar(String padre) {
         int i = 0;
         String cadena = padre + "->" + Integer.toString(this.keys.hashCode());
@@ -61,7 +77,8 @@ public class Nodo<T extends Comparable<T>> {
         int i = 0;
         String cadena = Integer.toString(this.keys.hashCode()) + "[label=\"";
         for (i = 0; i < this.n; i++) {
-            cadena += "|" + keys[i].toString();
+            String[] id = keys[i].toString().split("-");
+            cadena += "|" + id[0];
         }
         cadena += "|\"]";
         return cadena;

@@ -1,8 +1,10 @@
 package Registro;
 
 import Estructura.Arbol.BTree;
+import Estructura.Arbol.Nodo;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import javax.swing.table.DefaultTableModel;
 
 public class Vehiculo {
 
@@ -74,11 +76,17 @@ public class Vehiculo {
         }
     }
 
-    public void show() {
-        vehiculo.traverse();
+    public void show(DefaultTableModel modelo) {
+        if (vehiculo.getRoot() != null) {
+            vehiculo.show(modelo);
+        }
     }
 
     public void graficar() {
         vehiculo.graficar();
+    }
+
+    public boolean isEmty() {
+        return vehiculo.isEmpty();
     }
 }

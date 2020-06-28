@@ -2,6 +2,7 @@ package Estructura.Arbol;
 
 import Entidad.Cliente;
 import Entidad.Grafica;
+import javax.swing.table.DefaultTableModel;
 
 public class BTree<T extends Comparable<T>> {
 
@@ -18,6 +19,14 @@ public class BTree<T extends Comparable<T>> {
             this.root.traverse();
         }
         System.out.println();
+    }
+
+    public boolean isEmpty() {
+        return root == null;
+    }
+
+    public Nodo<T> getRoot() {
+        return this.root;
     }
 
     public void graficar() {
@@ -41,6 +50,12 @@ public class BTree<T extends Comparable<T>> {
     public void graficarLabel() {
         if (this.root != null) {
 
+        }
+    }
+
+    public void show(DefaultTableModel modelo) {
+        if (this.root != null) {
+            this.root.show(modelo);
         }
     }
 
