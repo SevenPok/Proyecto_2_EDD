@@ -3,30 +3,67 @@ digraph G {
 graph [ dpi = 300 ];
 rankdir=LR size="8,5"
 	node [shape=circle]
-"A"
-"A"->"B"[dir=none label="3"]
-"A"->"D"[dir=none label="6"]
-"A"->"E"[dir=none label="5"]
-"B"
-"B"->"A"[dir=none label="3"]
-"B"->"C"[dir=none label="4"]
-"B"->"E"[dir=none label="3"]
-"D"
-"D"->"A"[dir=none label="6"]
-"D"->"E"[dir=none label="2"]
-"E"
-"E"->"A"[dir=none label="5"]
-"E"->"B"[dir=none label="3"]
-"E"->"C"[dir=none label="1"]
-"E"->"F"[dir=none label="1"]
-"E"->"D"[dir=none label="2"]
-"C"
-"C"->"B"[dir=none label="4"]
-"C"->"F"[dir=none label="3"]
-"C"->"E"[dir=none label="1"]
-"F"
-"F"->"C"[dir=none label="3"]
-"F"->"E"[dir=none label="1"]
+"Cadiz"
+"Cadiz"->"Sevilla"[dir=none label="125"]
+"Sevilla"
+"Sevilla"->"Cadiz"[dir=none label="125"]
+"Sevilla"->"Granada"[dir=none label="256"]
+"Sevilla"->"Jaen"[dir=none label="242"]
+"Granada"
+"Granada"->"Sevilla"[dir=none label="256"]
+"Granada"->"Murcia"[dir=none label="278"]
+"Jaen"
+"Jaen"->"Sevilla"[dir=none label="242"]
+"Jaen"->"Madrid"[dir=none label="335"]
+"Murcia"
+"Murcia"->"Granada"[dir=none label="278"]
+"Murcia"->"Valencia"[dir=none label="241"]
+"Murcia"->"Albacete"[dir=none label="150"]
+"Madrid"
+"Madrid"->"Jaen"[dir=none label="335"]
+"Madrid"->"Albacete"[dir=none label="251"]
+"Madrid"->"Zaragoza"[dir=none label="325"]
+"Madrid"->"Badajoz"[dir=none label="403"]
+"Madrid"->"Valladolid"[dir=none label="193"]
+"Madrid"->"Bilbao"[dir=none label="395"]
+"Valencia"
+"Valencia"->"Murcia"[dir=none label="241"]
+"Valencia"->"Albacete"[dir=none label="191"]
+"Valencia"->"Barcelona"[dir=none label="349"]
+"Albacete"
+"Albacete"->"Murcia"[dir=none label="150"]
+"Albacete"->"Valencia"[dir=none label="191"]
+"Albacete"->"Madrid"[dir=none label="251"]
+"Barcelona"
+"Barcelona"->"Valencia"[dir=none label="349"]
+"Barcelona"->"Gerona"[dir=none label="100"]
+"Barcelona"->"Zaragoza"[dir=none label="296"]
+"Gerona"
+"Gerona"->"Barcelona"[dir=none label="100"]
+"Zaragoza"
+"Zaragoza"->"Barcelona"[dir=none label="296"]
+"Zaragoza"->"Madrid"[dir=none label="325"]
+"Zaragoza"->"Bilbao"[dir=none label="324"]
+"Badajoz"
+"Badajoz"->"Madrid"[dir=none label="403"]
+"Valladolid"
+"Valladolid"->"Madrid"[dir=none label="193"]
+"Valladolid"->"Vigo"[dir=none label="356"]
+"Valladolid"->"Coruna"[dir=none label="455"]
+"Valladolid"->"Bilbao"[dir=none label="280"]
+"Vigo"
+"Vigo"->"Valladolid"[dir=none label="356"]
+"Vigo"->"Coruna"[dir=none label="171"]
+"Coruna"
+"Coruna"->"Valladolid"[dir=none label="455"]
+"Coruna"->"Vigo"[dir=none label="171"]
+"Bilbao"
+"Bilbao"->"Valladolid"[dir=none label="280"]
+"Bilbao"->"Madrid"[dir=none label="395"]
+"Bilbao"->"Zaragoza"[dir=none label="324"]
+"Bilbao"->"Oviedo"[dir=none label="304"]
+"Oviedo"
+"Oviedo"->"Bilbao"[dir=none label="304"]
 
 
 }

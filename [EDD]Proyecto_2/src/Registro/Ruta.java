@@ -3,6 +3,8 @@ package Registro;
 import Entidad.Grafica;
 import Estructura.Grafo.Grafo;
 import Estructura.Grafo.Vertice;
+import Estructura.ListaSimple.ListaSimple;
+import Estructura.ListaSimple.Nodo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -50,7 +52,7 @@ public class Ruta {
                 } catch (NumberFormatException e) {
                 }
             }
-            this.ruta.show();
+            //this.ruta.show();
             return true;
         } catch (Exception e) {
             return false;
@@ -61,8 +63,8 @@ public class Ruta {
         Grafica.graficar(this.ruta.listaAdyacencia(), nombre);
     }
 
-    public void grafoRutas(String nombre) {
-        Grafica.graficar(this.ruta.graficaRutas(), nombre);
+    public void grafoRutas() {
+        Grafica.graficar(this.ruta.graficaRutas(), "Rutas");
     }
 
     public void recorridoAnchura(String vertice) {
@@ -74,8 +76,8 @@ public class Ruta {
         this.ruta.recorridoProfundidad(this.ruta.getVertice(vertice));
         System.out.println("");
     }
-    
-    public void rutaMasCorta(String origen, String destino){
-        this.ruta.rutaMasCorta(ruta.getVertice(origen), ruta.getVertice(destino));
+
+    public int rutaMasCorta(String origen, String destino) {
+        return this.ruta.rutaMasCorta(ruta.getVertice(origen), ruta.getVertice(destino));
     }
 }

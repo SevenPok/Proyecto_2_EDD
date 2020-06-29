@@ -1,0 +1,8 @@
+digraph G {
+
+graph [ dpi = 300 ];
+rankdir=LR size="8,5"
+	node [shape=circle]
+Sevilla->Jaen->Madrid->Valladolid->Vigo
+
+}

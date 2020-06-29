@@ -206,19 +206,4 @@ public class ListaDoble<T extends Comparable<T>> {
         }
     }
 
-    public static void main(String[] args) {
-        ListaDoble<Integer> lista = new ListaDoble<>();
-        lista.insertLast(2);
-        lista.insertLast(3);
-        lista.insertLast(4);
-        lista.insertLast(5);
-        lista.insertFirst(1);
-        lista.insertLast(8);
-        lista.insertLast(10);
-        lista.insertFirst(0);
-        lista.insertIndex(100, 2);
-        System.out.println("El dato es: " + lista.searchIndex(3).getData());
-        System.out.println("El tamaño es de: " + lista.getSize());
-        lista.showConsole();
-    }
 }

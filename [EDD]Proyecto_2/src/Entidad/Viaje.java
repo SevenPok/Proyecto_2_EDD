@@ -1,7 +1,6 @@
 package Entidad;
 
 import Estructura.Grafo.Vertice;
-import Estructura.ListaSimple.ListaSimple;
 
 public class Viaje {
 
@@ -11,9 +10,9 @@ public class Viaje {
     private Cliente cliente;
     private Conductor conductor;
     private Vehiculo vehiculo;
-    private ListaSimple<Vertice> ruta;
+    private String ruta;
 
-    public Viaje(String origen, String destino, String fecha_hora, Cliente cliente, Conductor conductor, Vehiculo vehiculo, ListaSimple<Vertice> ruta) {
+    public Viaje(String origen, String destino, String fecha_hora, Cliente cliente, Conductor conductor, Vehiculo vehiculo, String ruta) {
         this.origen = origen;
         this.destino = destino;
         this.fecha_hora = fecha_hora;
@@ -71,11 +70,11 @@ public class Viaje {
         this.vehiculo = vehiculo;
     }
 
-    public ListaSimple<Vertice> getRuta() {
+    public String getRuta() {
         return ruta;
     }
 
-    public void setRuta(ListaSimple<Vertice> ruta) {
+    public void setRuta(String ruta) {
         this.ruta = ruta;
     }
 

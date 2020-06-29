@@ -1,5 +1,6 @@
 package Estructura.Grafo;
 
+import Entidad.Grafica;
 import Estructura.ListaSimple.Cola;
 import Estructura.ListaSimple.ListaSimple;
 import Estructura.ListaSimple.Nodo;
@@ -234,7 +235,7 @@ public class Grafo {
         return a.getCosto() < b.getCosto();
     }
 
-    public void rutaMasCorta(Vertice origen, Vertice destino) {
+    public int rutaMasCorta(Vertice origen, Vertice destino) {
         ListaSimple<String> ruta = new ListaSimple<>();
         int CostoActual = 0;
         Vertice VerticeActual, destinoActual = null;
@@ -252,11 +253,11 @@ public class Grafo {
             listaOrdenada.removeFirst();
 
             if (VerticeActual == destino) {
-                System.out.println("Costo: " + CostoActual);
+                //System.out.println("Costo: " + CostoActual);
                 band2 = 1;
                 destinoActual = destino;
                 while (!pila.isEmpty()) {
-                    System.out.print(destinoActual.nombre + "<-");
+                    //System.out.print(destinoActual.nombre + "<-");
                     ruta.addFirst(destinoActual.nombre);
                     while (!pila.isEmpty() && pila.top().getDestino() != destinoActual) {
                         pila.pop();
@@ -300,17 +301,22 @@ public class Grafo {
         System.out.println("");
         if (band2 == 0) {
             System.out.println("No encontro la ruta");
+            return -1;
         } else {
             Estructura.ListaSimple.Nodo<String> temporal = ruta.getHead();
+            String cadena = "graph [ dpi = 300 ];\n";
+            cadena += "rankdir=LR size=\"8,5\"\n"
+                    + "	node [shape=circle]\n";
             while (temporal != null) {
                 if (temporal.getNext() != null) {
-                    System.out.print(temporal.getData() + "->");
+                    cadena += temporal.getData() + "->";
                 } else {
-                    System.out.print(temporal.getData());
+                    cadena += temporal.getData();
                 }
                 temporal = temporal.getNext();
             }
-            System.out.println("");
+            Grafica.graficar(cadena, "RutaCorta");
+            return CostoActual;
         }
 
     }

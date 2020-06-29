@@ -4,6 +4,7 @@ import Estructura.ListaDoble.ListaDobleCircular;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.table.DefaultTableModel;
 
 public class Conductor {
 
@@ -74,7 +75,19 @@ public class Conductor {
         }
     }
 
-    public void show() {
-        conductor.showConsole();
+    public boolean isEmpty() {
+        return conductor.isEmpty();
+    }
+
+    public void show(DefaultTableModel modelo) {
+        conductor.setModelo(modelo);
+    }
+
+    public boolean graficar() {
+        if (!conductor.isEmpty()) {
+            conductor.graficar();
+            return true;
+        }
+        return false;
     }
 }

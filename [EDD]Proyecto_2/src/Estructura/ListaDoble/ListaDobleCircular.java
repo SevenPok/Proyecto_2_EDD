@@ -1,5 +1,8 @@
 package Estructura.ListaDoble;
 
+import Entidad.Grafica;
+import javax.swing.table.DefaultTableModel;
+
 public class ListaDobleCircular<T extends Comparable<T>> {
 
     private Nodo<T> head;
@@ -118,6 +121,51 @@ public class ListaDobleCircular<T extends Comparable<T>> {
                 System.out.println(aux.getData().toString());
                 aux = aux.getNext();
             } while (aux != head);
+        }
+    }
+
+    public void setModelo(DefaultTableModel modelo) {
+        if (!isEmpty()) {
+            Nodo<T> aux = head;
+            do {
+                modelo.addRow(aux.getData().toString().split("-"));
+                aux = aux.getNext();
+            } while (aux != head);
+        }
+    }
+
+    public void graficar() {
+        if (isEmpty()) {
+            System.out.println("Esta vacia la lista");
+        } else {
+            Nodo<T> aux = head;
+            String cadena = "node[shape=box]\n";
+            String alinear = "{rank=same;";
+            do {
+                cadena += aux.getData().hashCode() + "->" + aux.getNext().getData().hashCode() + "\n";
+                cadena += aux.getData().hashCode() + "->" + aux.getBack().getData().hashCode() + "\n";
+                alinear += aux.getData().hashCode() + ";";
+                aux = aux.getNext();
+            } while (aux != head);
+            alinear += "}\n";
+            cadena += alinear;
+            cadena += label();
+            Grafica.graficar(cadena, "Conductores");
+        }
+    }
+
+    private String label() {
+        if (isEmpty()) {
+            System.out.println("Esta vacia la lista");
+            return "";
+        } else {
+            Nodo<T> aux = head;
+            String cadena = "";
+            do {
+                cadena += aux.getData().hashCode() + "[label=\"DPI: " + aux.getData().toString().split("-")[0] + "\"]\n";
+                aux = aux.getNext();
+            } while (aux != head);
+            return cadena;
         }
     }
 }
