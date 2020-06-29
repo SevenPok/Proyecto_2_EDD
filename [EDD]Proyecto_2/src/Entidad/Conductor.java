@@ -1,8 +1,10 @@
 package Entidad;
 
+import java.math.BigInteger;
+
 public class Conductor implements Comparable<Conductor> {
 
-    private int dpi;
+    private BigInteger dpi;
     private String nombre;
     private String apellido;
     private String tipoLicencia;
@@ -11,7 +13,7 @@ public class Conductor implements Comparable<Conductor> {
     private String telefono;
     private String direccion;
 
-    public Conductor(int dpi, String nombre, String apellido, String tipoLicencia, String genero, String fechaNac, String telefono, String direccion) {
+    public Conductor(BigInteger dpi, String nombre, String apellido, String tipoLicencia, String genero, String fechaNac, String telefono, String direccion) {
         this.dpi = dpi;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -23,11 +25,11 @@ public class Conductor implements Comparable<Conductor> {
 
     }
 
-    public int getDpi() {
+    public BigInteger getDpi() {
         return dpi;
     }
 
-    public void setDpi(int dpi) {
+    public void setDpi(BigInteger dpi) {
         this.dpi = dpi;
     }
 
@@ -102,7 +104,7 @@ public class Conductor implements Comparable<Conductor> {
     public int compareTo(Conductor o) {
         if (o.getDpi() == this.dpi) {
             return 0;
-        } else if (o.getDpi() > this.dpi) {
+        } else if (this.dpi.intValue() > o.getDpi().intValue()) {
             return 1;
         } else {
             return -1;

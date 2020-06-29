@@ -263,7 +263,8 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
         lista.addLast(6);
         lista.addLast(7);
         lista.addLast(8);
-
+        lista.add(1, 0);
+        lista.add(1, 3);
         lista.showConsole();
     }
 

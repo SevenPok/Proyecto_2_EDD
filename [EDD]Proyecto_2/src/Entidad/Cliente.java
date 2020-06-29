@@ -1,14 +1,16 @@
 package Entidad;
 
+import java.math.BigInteger;
+
 public class Cliente implements Comparable<Cliente> {
 
-    private int dpi;
+    private BigInteger dpi;
     private String nombre;
     private String apellido;
     private String genero;
     private String direccion;
 
-    public Cliente(int dpi, String nombre, String apellido, String genero, String direccion) {
+    public Cliente(BigInteger dpi, String nombre, String apellido, String genero, String direccion) {
         this.dpi = dpi;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -16,11 +18,11 @@ public class Cliente implements Comparable<Cliente> {
         this.direccion = direccion;
     }
 
-    public int getDpi() {
+    public BigInteger getDpi() {
         return dpi;
     }
 
-    public void setDpi(int dpi) {
+    public void setDpi(BigInteger dpi) {
         this.dpi = dpi;
     }
 
@@ -64,9 +66,9 @@ public class Cliente implements Comparable<Cliente> {
 
     @Override
     public int compareTo(Cliente o) {
-        if (o.getDpi() == this.dpi) {
+        if (this.dpi == o.getDpi()) {
             return 0;
-        } else if (o.getDpi() > this.dpi) {
+        } else if (this.dpi.intValue() > o.getDpi().intValue()) {
             return 1;
         } else {
             return -1;

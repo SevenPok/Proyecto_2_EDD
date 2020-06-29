@@ -4,6 +4,7 @@ import Estructura.ListaDoble.ListaDobleCircular;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import javax.swing.table.DefaultTableModel;
 
 public class Conductor {
@@ -65,7 +66,7 @@ public class Conductor {
                 String[] cadena = linea.split(";");
                 String[] data = cadena[0].split("%");
                 try {
-                    add(new Entidad.Conductor(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
+                    add(new Entidad.Conductor(new BigInteger(data[0]), data[1], data[2], data[3], data[4], data[5], data[6], data[7]));
                 } catch (NumberFormatException e) {
                 }
             }

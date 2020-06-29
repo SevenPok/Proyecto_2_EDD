@@ -168,4 +168,36 @@ public class ListaDobleCircular<T extends Comparable<T>> {
             return cadena;
         }
     }
+
+    public void ordenar() {
+        if (!isEmpty()) {
+            T aux;
+            Nodo<T> i, j;
+            i = head;
+            do {
+                j = i.getNext();
+                while (j != head) {
+                    if (i.getData().compareTo(j.getData()) > 0) {
+                        aux = j.getData();
+                        j.setData(i.getData());
+                        i.setData(aux);
+                    }
+                    j = j.getNext();
+                }
+                i = i.getNext();
+                j = i.getNext();
+            } while (i != head);
+        }
+    }
+
+    public static void main(String[] args) {
+        ListaDobleCircular<Integer> lista = new ListaDobleCircular<>();
+        lista.addLast(2);
+        lista.addLast(5);
+        lista.addLast(4);
+        lista.addLast(3);
+        lista.addLast(1);
+        lista.ordenar();
+        lista.showConsole();
+    }
 }
