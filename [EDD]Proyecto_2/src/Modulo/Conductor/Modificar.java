@@ -280,8 +280,8 @@ public class Modificar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (isFull()) {
-            Conductor nuevo = new Conductor(new BigInteger("0"), "", "", "", "", "", "", "");
-            nuevo.setDpi(new BigInteger(txtDpi.getText()));
+            Conductor nuevo = new Conductor("0", "", "", "", "", "", "", "");
+            nuevo.setDpi(txtDpi.getText());
             nuevo.setNombre(txtNombre.getText());
             nuevo.setApellido(txtApellido.getText());
             nuevo.setTipoLicencia(txtLicencia.getText());
@@ -301,8 +301,8 @@ public class Modificar extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (isFull()) {
-            Conductor nuevo = new Conductor(new BigInteger("0"), "", "", "", "", "", "", "");
-            nuevo.setDpi(new BigInteger(txtDpi.getText()));
+            Conductor nuevo = new Conductor("0", "", "", "", "", "", "", "");
+            nuevo.setDpi(txtDpi.getText());
             nuevo.setNombre(txtNombre.getText());
             nuevo.setApellido(txtApellido.getText());
             nuevo.setTipoLicencia(txtLicencia.getText());
