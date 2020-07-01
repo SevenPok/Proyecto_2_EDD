@@ -1,5 +1,8 @@
 package Estructura.TablaHash;
 import Entidad.Cliente;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 public class TablaHash {
@@ -7,7 +10,14 @@ public class TablaHash {
     private int numeroElementos;
     private double factordeCarga;
     private NodoTabla [] Tabla;
+    private static TablaHash tablaH;
     
+    public static TablaHash getInstance(){
+        if(tablaH==null){
+            tablaH = new TablaHash(37);
+        }
+        return tablaH;
+    }
     
     public TablaHash(int tamanio) {
         this.tamanio = tamanio;
@@ -80,7 +90,11 @@ public class TablaHash {
         
     }
     
-    
+    public void eliminar(int dpi){
+        if (!existe(dpi)) {
+            return;
+        }
+    }
     private ListaDoble ObtenerCliente(int dpi) {
         for (int i = 0; i < tamanio; i++) {
             if (Tabla[i] != null) {
@@ -124,5 +138,24 @@ public class TablaHash {
        System.out.println(codGraph);
        return codGraph;
    } 
+   
+   public boolean CargaMasiva(String ruta){
+       try {
+            FileReader fr = new FileReader(ruta);
+            BufferedReader br = new BufferedReader(fr);
+            String linea = "";
+            while ((linea = br.readLine()) != null) {
+                String[] cadena = linea.split(";");
+                String[] data = cadena[0].split(", ");
+                try {
+                    insertar(Integer.parseInt(data[0]), new Cliente(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4],data[5],data[6]));
+                } catch (NumberFormatException e) {
+                }
+            }
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
+   }
     
 }

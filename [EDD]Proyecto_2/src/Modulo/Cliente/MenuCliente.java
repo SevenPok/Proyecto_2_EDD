@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Modulo.Cliente;
+import Estructura.TablaHash.TablaHash;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
  * @author Co
  */
 public class MenuCliente extends javax.swing.JFrame {
+    TablaHash tablah = TablaHash.getInstance();
     
     /**
      * Creates new form MenuCliente
@@ -169,30 +171,18 @@ public class MenuCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        String texto="";
-        String aux="";
-        try {
-        JFileChooser abrir = new JFileChooser();
-        abrir.showOpenDialog(this);
-        File abreteSesamo = abrir.getSelectedFile();
-        
-            if(abreteSesamo!=null){
-            FileReader archivos=new FileReader(abreteSesamo);
-            BufferedReader lee=new BufferedReader(archivos);
-                while ((aux=lee.readLine())!=null) {                    
-                    texto+=aux+'\n';
-                    
-                }
-                lee.close();
+        JFileChooser fc = new JFileChooser();
+        int selection = fc.showOpenDialog(this);
+        if (selection == JFileChooser.APPROVE_OPTION) {
+            File archivo = fc.getSelectedFile();
+            String ruta = archivo.getAbsolutePath();
+            if (tablah.CargaMasiva(ruta)) {
+                JOptionPane.showMessageDialog(null, "Se completo la carga existosamente");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en la carga");
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e+"" +
-           "\nNo se ha encontrado el archivo",
-                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
         }
         
-        
-    
     }//GEN-LAST:event_jMenu1MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
