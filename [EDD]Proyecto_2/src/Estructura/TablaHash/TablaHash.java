@@ -110,6 +110,23 @@ public class TablaHash {
         return null;
     }
     
+    public Cliente buscarCli(int dpi){
+        for (int i = 0; i < tamanio; i++) {
+            if (Tabla[i] != null) {   
+                if (i == posicionenTabla(dpi)) {
+                    ListaN aux = Tabla[i].lista.first;
+                    while(aux==null){
+                        if(dpi== aux.dato.getDpi()){
+                            return aux.dato;
+                        }
+                        aux=aux.nextt;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
    public String graficar(TablaHash tabla){
        String codGraph="";
        codGraph+="rankdir = LR; \n node [shape=record];\n";
