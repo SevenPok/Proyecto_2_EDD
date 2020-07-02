@@ -1,12 +1,18 @@
 package Registro;
 
 import Entidad.Grafica;
+import Entidad.Viaje;
 import Estructura.Grafo.Grafo;
 import Estructura.Grafo.Vertice;
 import Estructura.ListaSimple.ListaSimple;
 import Estructura.ListaSimple.Nodo;
+import Modulo.Principal.Principal;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Ruta {
 
@@ -77,7 +83,26 @@ public class Ruta {
         System.out.println("");
     }
 
-    public int rutaMasCorta(String origen, String destino) {
-        return this.ruta.rutaMasCorta(ruta.getVertice(origen), ruta.getVertice(destino));
+    public void rutaMasCorta(String origen, String destino, Viaje viaje) {
+        this.ruta.rutaMasCorta(ruta.getVertice(origen), ruta.getVertice(destino), viaje);
+    }
+
+    public void iniciarApp() {
+        JFileChooser fc = new JFileChooser();
+        int selection = fc.showOpenDialog(null);
+        if (selection == JFileChooser.APPROVE_OPTION) {
+            File archivo = fc.getSelectedFile();
+            String ruta = archivo.getAbsolutePath();
+            if (cargaMasiva(ruta)) {
+                JOptionPane.showMessageDialog(null, "Se completo la carga existosamente");
+
+                Principal ventana = new Principal();
+                ventana.show(true);
+                grafoRutas();
+            } else {
+                JOptionPane.showMessageDialog(null, "Error en la carga");
+            }
+        }
+
     }
 }

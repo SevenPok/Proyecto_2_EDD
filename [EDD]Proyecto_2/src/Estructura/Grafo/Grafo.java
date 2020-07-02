@@ -1,6 +1,8 @@
 package Estructura.Grafo;
 
 import Entidad.Grafica;
+import Entidad.Ruta;
+import Entidad.Viaje;
 import Estructura.ListaSimple.Cola;
 import Estructura.ListaSimple.ListaSimple;
 import Estructura.ListaSimple.Nodo;
@@ -126,7 +128,7 @@ public class Grafo {
             cadena += "\"" + auxVertice.nombre + "\"\n";
             auxArista = auxVertice.adjacent;
             while (auxArista != null) {
-                cadena += "\"" + auxVertice.nombre + "\"->\"" + auxArista.adjacent.nombre + "\"[dir=none label=\"" + auxArista.peso + "\"]\n";
+                cadena += "\"" + auxVertice.nombre + "\"->\"" + auxArista.adjacent.nombre + "\"[label=\"" + auxArista.peso + "\"]\n";
                 auxArista = auxArista.next;
             }
             auxVertice = auxVertice.next;
@@ -235,8 +237,8 @@ public class Grafo {
         return a.getCosto() < b.getCosto();
     }
 
-    public int rutaMasCorta(Vertice origen, Vertice destino) {
-        ListaSimple<String> ruta = new ListaSimple<>();
+    public void rutaMasCorta(Vertice origen, Vertice destino, Viaje viaje) {
+        ListaSimple<Entidad.Ruta> ruta = new ListaSimple<>();
         int CostoActual = 0;
         Vertice VerticeActual, destinoActual = null;
         Arista aux;
@@ -253,12 +255,13 @@ public class Grafo {
             listaOrdenada.removeFirst();
 
             if (VerticeActual == destino) {
-                //System.out.println("Costo: " + CostoActual);
+                System.out.println("Costo: " + CostoActual);
                 band2 = 1;
                 destinoActual = destino;
                 while (!pila.isEmpty()) {
                     //System.out.print(destinoActual.nombre + "<-");
-                    ruta.addFirst(destinoActual.nombre);
+
+                    ruta.addFirst(new Ruta(destinoActual.nombre, CostoActual));
                     while (!pila.isEmpty() && pila.top().getDestino() != destinoActual) {
                         pila.pop();
                     }
@@ -301,23 +304,33 @@ public class Grafo {
         System.out.println("");
         if (band2 == 0) {
             System.out.println("No encontro la ruta");
-            return -1;
         } else {
-            Estructura.ListaSimple.Nodo<String> temporal = ruta.getHead();
+            viaje.setRuta(ruta);
+            Estructura.ListaSimple.Nodo<Ruta> temporal = ruta.getHead();
             String cadena = "graph [ dpi = 300 ];\n";
             cadena += "rankdir=LR size=\"8,5\"\n"
-                    + "	node [shape=circle]\n";
+                    + "	node [shape=record]\n";
+            cadena += label(ruta);
             while (temporal != null) {
                 if (temporal.getNext() != null) {
-                    cadena += temporal.getData() + "->";
+                    cadena += temporal.getData().getLugar() + "->";
                 } else {
-                    cadena += temporal.getData();
+                    cadena += temporal.getData().getLugar();
                 }
                 temporal = temporal.getNext();
             }
             Grafica.graficar(cadena, "RutaCorta");
-            return CostoActual;
         }
 
+    }
+
+    private String label(ListaSimple<Ruta> ruta) {
+        Nodo<Ruta> aux = ruta.getHead();
+        String cadena = "";
+        while (aux != null) {
+            cadena += aux.getData().getLugar() + "[label=\"" + "Lugar: " + aux.getData().getLugar() + "\\nTiempo: " + aux.getData().getTiempo() + "\"]\n";
+            aux = aux.getNext();
+        }
+        return cadena;
     }
 }

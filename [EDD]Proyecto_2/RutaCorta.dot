@@ -2,7 +2,10 @@ digraph G {
 
 graph [ dpi = 300 ];
 rankdir=LR size="8,5"
-	node [shape=circle]
-Sevilla->Jaen->Madrid->Valladolid->Vigo
+	node [shape=record]
+A[label="Lugar: A\nTiempo: 15"]
+C[label="Lugar: C\nTiempo: 15"]
+D[label="Lugar: D\nTiempo: 15"]
+A->C->D
 
 }
