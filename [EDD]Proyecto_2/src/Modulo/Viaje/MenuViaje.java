@@ -52,6 +52,17 @@ public class MenuViaje extends javax.swing.JFrame {
         txtcliente = new javax.swing.JTextField();
         txtplaca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        txtminuto = new javax.swing.JTextField();
+        txtdia = new javax.swing.JTextField();
+        txtmes = new javax.swing.JTextField();
+        txtano = new javax.swing.JTextField();
+        txthora = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,7 +102,35 @@ public class MenuViaje extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 180, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 180, 60));
+
+        jButton2.setText("Graficar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 170, 60));
+        getContentPane().add(txtminuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 30, -1));
+        getContentPane().add(txtdia, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 30, -1));
+        getContentPane().add(txtmes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 30, -1));
+        getContentPane().add(txtano, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 30, -1));
+        getContentPane().add(txthora, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 30, -1));
+
+        jLabel7.setText(":");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, 20, 30));
+
+        jLabel8.setText("Hora:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
+
+        jLabel9.setText("Fecha: DD/MM/YY");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, -1, -1));
+
+        jLabel10.setText("/");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 50, 20));
+
+        jLabel11.setText("/");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 20, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,10 +140,11 @@ public class MenuViaje extends javax.swing.JFrame {
         Vehiculo vehiculo1 = Registro.Vehiculo.getRegistro().search(new Vehiculo(txtplaca.getText(),"","",0,"","",""));
         Conductor Conductor1 = Registro.Conductor.getRegistro().search(new Conductor(txtconductor.getText(),"","","","","","",""));
         Cliente cliente1 = tabla.buscarCli(Integer.parseInt(txtcliente.getText()));
-        Timestamp tiempo = new Timestamp(System.currentTimeMillis());
-        Viaje viajesito = new  Viaje(txtorigen.getText(),txtdestino.getText(),"",cliente1,Conductor1,vehiculo1,new ListaSimple<Ruta>());
+        String FechaHora = txtdia.getText()+txtmes.getText()+txtano.getText()+txthora.getText()+":"+txtminuto.getText();
+        String jave= txtplaca.getText()+FechaHora;
+        Viaje viajesito = new  Viaje(txtorigen.getText(),txtdestino.getText(),FechaHora,cliente1,Conductor1,vehiculo1,new ListaSimple<Ruta>());
         try {
-            blockchain.agregarAlFinal(viajesito,"");
+            blockchain.agregarAlFinal(viajesito,jave);
             Registro.Ruta.getRegistro().rutaMasCorta(txtorigen.getText(), txtdestino.getText(),viajesito );
         } catch (Exception e) {
         }
@@ -114,6 +154,12 @@ public class MenuViaje extends javax.swing.JFrame {
     private void txtdestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdestinoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdestinoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String o =blockchain.grafica(blockchain);
+        Entidad.Grafica.graficar(o, "Blockchain");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,15 +198,26 @@ public class MenuViaje extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txtano;
     private javax.swing.JTextField txtcliente;
     private javax.swing.JTextField txtconductor;
     private javax.swing.JTextField txtdestino;
+    private javax.swing.JTextField txtdia;
+    private javax.swing.JTextField txthora;
+    private javax.swing.JTextField txtmes;
+    private javax.swing.JTextField txtminuto;
     private javax.swing.JTextField txtorigen;
     private javax.swing.JTextField txtplaca;
     // End of variables declaration//GEN-END:variables
