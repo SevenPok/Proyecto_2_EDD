@@ -8,6 +8,7 @@ package Modulo.Principal;
 import Modulo.Cliente.MenuCliente;
 import Modulo.Conductor.MenuConductor;
 import Modulo.Vehiculo.MenuVehiculo;
+import Modulo.Viaje.Reporte.Reporte;
 
 /**
  *
@@ -79,6 +80,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButton5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jButton5.setText("Reportes");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,6 +153,12 @@ public class Principal extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Reporte ventana = new Reporte();
+        ventana.show(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

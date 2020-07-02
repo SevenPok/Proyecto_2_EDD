@@ -3,9 +3,9 @@ digraph G {
 graph [ dpi = 300 ];
 rankdir=LR size="8,5"
 	node [shape=record]
-A[label="Lugar: A\nTiempo: 15"]
-C[label="Lugar: C\nTiempo: 15"]
-D[label="Lugar: D\nTiempo: 15"]
-A->C->D
+Madrid[label="Lugar: Madrid\nTiempo: 621"]
+Zaragoza[label="Lugar: Zaragoza\nTiempo: 621"]
+Barcelona[label="Lugar: Barcelona\nTiempo: 621"]
+Madrid->Zaragoza->Barcelona
 
 }

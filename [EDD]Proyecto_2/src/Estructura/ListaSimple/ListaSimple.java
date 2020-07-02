@@ -233,6 +233,31 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
 
     }
 
+    public boolean exist(T data) {
+        if (!isEmpty()) {
+            Nodo<T> aux = head;
+            while (aux != null) {
+                if (aux.getData().compareTo(data) == 0) {
+                    return true;
+                }
+                aux = aux.getNext();
+            }
+        }
+        return false;
+    }
+
+    public String struct() {
+        String cadena = "";
+        if (!isEmpty()) {
+            Nodo<T> aux = head;
+            while (aux != null) {
+                cadena += aux.getData().toString();
+                aux = aux.getNext();
+            }
+        }
+        return cadena;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new MyIterator<ListaSimple>();

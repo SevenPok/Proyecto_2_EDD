@@ -19,7 +19,7 @@ public class EDDProyecto_2 {
 //        Registro.Vehiculo.getRegistro().cargaMasiva("D:\\SevenPok\\Documents\\Usac\\Estructuras de datos\\Proyectos\\Carga Masiva\\arbolb.txt");
 //        System.out.println(Registro.Vehiculo.getRegistro().search(new Vehiculo("p14lAf14", "", "", 0, "", "", "")).toString2());
 //
-        TablaHash tablita = TablaHash.getInstance();
+        
         Registro.Ruta.getRegistro().iniciarApp();
        
 

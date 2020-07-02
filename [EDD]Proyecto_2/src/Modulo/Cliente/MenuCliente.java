@@ -7,6 +7,7 @@ package Modulo.Cliente;
 import Estructura.TablaHash.TablaHash;
 import Entidad.Grafica;
 import Entidad.Cliente;
+import Modulo.Principal.Principal;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -75,7 +76,12 @@ public class MenuCliente extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Agregar");
@@ -191,6 +197,7 @@ public class MenuCliente extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -249,6 +256,12 @@ public class MenuCliente extends javax.swing.JFrame {
         ventana.show(true);
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Principal ventana = new Principal();
+        ventana.show(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

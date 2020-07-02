@@ -13,17 +13,19 @@ import Entidad.Viaje;
 import Estructura.TablaHash.TablaHash;
 import Estructura.BlockChain.ListaSimpleB;
 import Estructura.ListaSimple.ListaSimple;
+import Modulo.Principal.Principal;
 import java.sql.Timestamp;
-
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Co
  */
 public class MenuViaje extends javax.swing.JFrame {
-    TablaHash tabla = TablaHash.getInstance();
-    ListaSimpleB blockchain = ListaSimpleB.getInstance();
+
     
+    ListaSimpleB blockchain = ListaSimpleB.getInstance();
+
     /**
      * Creates new form MenuViaje
      */
@@ -64,7 +66,12 @@ public class MenuViaje extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Viajes");
@@ -133,33 +140,57 @@ public class MenuViaje extends javax.swing.JFrame {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 20, 20));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Vehiculo vehiculo1 = Registro.Vehiculo.getRegistro().search(new Vehiculo(txtplaca.getText(),"","",0,"","",""));
-        Conductor Conductor1 = Registro.Conductor.getRegistro().search(new Conductor(txtconductor.getText(),"","","","","","",""));
-        Cliente cliente1 = tabla.buscarCli(Integer.parseInt(txtcliente.getText()));
-        String FechaHora = txtdia.getText()+txtmes.getText()+txtano.getText()+txthora.getText()+":"+txtminuto.getText();
-        String jave= txtplaca.getText()+FechaHora;
-        Viaje viajesito = new  Viaje(txtorigen.getText(),txtdestino.getText(),FechaHora,cliente1,Conductor1,vehiculo1,new ListaSimple<Ruta>());
+
         try {
-            blockchain.agregarAlFinal(viajesito,jave);
-            Registro.Ruta.getRegistro().rutaMasCorta(txtorigen.getText(), txtdestino.getText(),viajesito );
+            Vehiculo vehiculo1 = Registro.Vehiculo.getRegistro().search(new Vehiculo(txtplaca.getText(), "", "", 0, "", "", ""));
+            Conductor Conductor1 = Registro.Conductor.getRegistro().search(new Conductor(txtconductor.getText(), "", "", "", "", "", "", ""));
+            Cliente cliente1 = TablaHash.getInstance().buscarCli(Integer.parseInt(txtcliente.getText()));
+            String FechaHora = txtdia.getText() + txtmes.getText() + txtano.getText() + txthora.getText() + ":" + txtminuto.getText();
+            String jave = txtplaca.getText() + FechaHora;
+            Viaje viajesito = new Viaje(txtorigen.getText(), txtdestino.getText(), FechaHora, cliente1, Conductor1, vehiculo1, new ListaSimple<Ruta>());
+            blockchain.agregarAlFinal(viajesito, jave);
+            Registro.Ruta.getRegistro().rutaMasCorta(txtorigen.getText(), txtdestino.getText(), viajesito);
+            JOptionPane.showMessageDialog(null, "Viaje creado con exito");
+            vaciar();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en crear el viaje");
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void vaciar(){
+        txtano.setText("");
+        txtcliente.setText("");
+        txtconductor.setText("");
+        txtdestino.setText("");
+        txtdia.setText("");
+        txthora.setText("");
+        txtmes.setText("");
+        txtminuto.setText("");
+        txtorigen.setText("");
+        txtplaca.setText("");
+    }
+    
     private void txtdestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdestinoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtdestinoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String o =blockchain.grafica(blockchain);
-        Entidad.Grafica.graficar(o, "Blockchain");
+//        String o =blockchain.grafica(blockchain);
+//        Entidad.Grafica.graficar(o, "Blockchain");
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        Principal ventana = new Principal();
+        ventana.show(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

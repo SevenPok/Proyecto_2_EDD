@@ -82,8 +82,7 @@ public class Vehiculo implements Comparable<Vehiculo> {
     }
 
     public String toString2() {
-        return "Placa: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio + "\nColor: " + color + "\nPrecio: Q " + precio + "\nTipo de caja: " + tipoCaja
-                + "\n--------------------------------------";
+        return "Placa: " + placa + "\nMarca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio + "\nColor: " + color + "\nPrecio: Q " + precio + "\nTipo de caja: " + tipoCaja;
     }
 
     @Override

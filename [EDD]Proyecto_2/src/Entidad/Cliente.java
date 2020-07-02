@@ -37,9 +37,6 @@ public class Cliente implements Comparable<Cliente> {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-
-    
 
     public int getDpi() {
         return dpi;
@@ -85,6 +82,10 @@ public class Cliente implements Comparable<Cliente> {
     public String toString() {
         return "DPI: " + dpi + "\nNombres: " + nombre + "\nApellidos: " + apellido + "\nGenero: " + genero + "\nDireccion: " + direccion
                 + "\n--------------------------------------";
+    }
+
+    public String toString2() {
+        return "DPI: " + dpi + "\nNombres: " + nombre + "\nApellidos: " + apellido + "\nGenero: " + genero + "\nDireccion: " + direccion;
     }
 
     @Override

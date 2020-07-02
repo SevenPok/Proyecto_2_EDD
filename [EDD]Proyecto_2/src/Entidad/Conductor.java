@@ -94,8 +94,7 @@ public class Conductor implements Comparable<Conductor> {
 
     public String toString2() {
         return "DPI: " + dpi + "\nNombres: " + nombre + "\nApellidos: " + apellido + "\nTipo de licencia: " + tipoLicencia + "\nGenero: " + genero
-                + "\nFecha de nacimiento: " + fechaNac + "\nTelefono: " + telefono + "\nDireccion: " + direccion
-                + "\n--------------------------------------";
+                + "\nFecha de nacimiento: " + fechaNac + "\nTelefono: " + telefono + "\nDireccion: " + direccion;
     }
 
     @Override
