@@ -61,7 +61,7 @@ public class TablaHash {
                 reHash(tamanio);
             } 
         }else if (existe(iden)) {
-            ListaDoble lista = ObtenerCliente(iden);
+            ListaDoble lista = ObtenerCliente(posicionenTabla(iden));
             if (lista.existe(cli.getDpi())==false) {
                 lista.Insertar(cli);
             }else{
@@ -85,14 +85,12 @@ public class TablaHash {
         numeroElementos=Tablaaux.numeroElementos;
         factordeCarga=Tablaaux.factordeCarga;
         //borrar tabla
-        Tabla=Tablaaux.Tabla;
-        
-        
+        Tabla=Tablaaux.Tabla;  
     }
     
     public void eliminar(int dpi){
         if (existe(dpi)) {
-            ListaDoble listita = ObtenerCliente(dpi);
+            ListaDoble listita = ObtenerCliente(posicionenTabla(dpi));
             listita.Borrar(dpi);
             System.out.println("Se elimino");
         }else{
@@ -102,7 +100,7 @@ public class TablaHash {
     private ListaDoble ObtenerCliente(int dpi) {
         for (int i = 0; i < tamanio; i++) {
             if (Tabla[i] != null) {
-                if (Tabla[i].ident == dpi) {
+                if (i== dpi) {
                     return Tabla[i].lista;
                 }
             }

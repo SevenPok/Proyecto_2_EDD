@@ -142,7 +142,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        Modulo.Viaje.MenuViaje ventana = new Modulo.Viaje.MenuViaje();
+        ventana.show(true);
+        this.dispose();
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
