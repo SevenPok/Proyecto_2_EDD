@@ -91,8 +91,12 @@ public class TablaHash {
     }
     
     public void eliminar(int dpi){
-        if (!existe(dpi)) {
-            return;
+        if (existe(dpi)) {
+            ListaDoble listita = ObtenerCliente(dpi);
+            listita.Borrar(dpi);
+            System.out.println("Se elimino");
+        }else{
+            System.out.println("El usuario no existe");
         }
     }
     private ListaDoble ObtenerCliente(int dpi) {
@@ -121,7 +125,7 @@ public class TablaHash {
                ListaN auxiliar = ntabla.lista.first;
                int contador=0;
                while(auxiliar!=null){
-                   codGraph+="<f"+contador+"> "+auxiliar.dato.getDpi()+"|";
+                   codGraph+="<f"+contador+"> "+auxiliar.dato.getDpi()+"-"+auxiliar.dato.getNombre()+"|";
                    contador++;
                    auxiliar=auxiliar.nextt;
                }
