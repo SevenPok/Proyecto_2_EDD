@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Modulo.Principal;
-
+import Modulo.Cliente.MenuCliente;
 import Modulo.Conductor.MenuConductor;
 import Modulo.Vehiculo.MenuVehiculo;
 import Modulo.Viaje.MenuViaje;
@@ -42,6 +42,16 @@ public class Principal extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jButton1.setText("Clientes");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jButton2.setText("Vehiculos");
@@ -121,10 +131,29 @@ public class Principal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+<<<<<<< HEAD
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         MenuViaje ventana = new MenuViaje();
         ventana.show(true);
         this.dispose();
+=======
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MenuCliente ventana = new MenuCliente();
+        ventana.show(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Modulo.Viaje.MenuViaje ventana = new Modulo.Viaje.MenuViaje();
+        ventana.show(true);
+        this.dispose();
+        
+>>>>>>> b1c7e65f098e099afc9d3892c5299beef4c1cb79
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

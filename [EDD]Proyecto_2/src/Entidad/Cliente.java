@@ -8,15 +8,38 @@ public class Cliente implements Comparable<Cliente> {
     private String nombre;
     private String apellido;
     private String genero;
+    private String nacimiento;
+    private String telefono;
     private String direccion;
 
-    public Cliente(int dpi, String nombre, String apellido, String genero, String direccion) {
+    public Cliente(int dpi, String nombre, String apellido, String genero, String nacimiento, String telefono, String direccion) {
         this.dpi = dpi;
         this.nombre = nombre;
         this.apellido = apellido;
         this.genero = genero;
+        this.nacimiento = nacimiento;
+        this.telefono = telefono;
         this.direccion = direccion;
     }
+
+    public String getNacimiento() {
+        return nacimiento;
+    }
+
+    public void setNacimiento(String nacimiento) {
+        this.nacimiento = nacimiento;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+
+    
 
     public int getDpi() {
         return dpi;
