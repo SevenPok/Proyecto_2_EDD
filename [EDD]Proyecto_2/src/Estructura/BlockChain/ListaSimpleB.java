@@ -98,11 +98,11 @@ public class ListaSimpleB {
     }
      
      public Viaje buscarViaje(String llave){
-         
          if(inicio!=null){
              NodoBlock aux = inicio;
              do {
-                 if (aux.getLlave()==llave) {
+                 String comp=aux.getLlave();
+                 if (llave.equals(comp)) {
                      return aux.getViaje();
                  }
                  aux=aux.getSiguiente();
