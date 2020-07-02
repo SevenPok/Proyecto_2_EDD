@@ -7,7 +7,6 @@ package Modulo.Cliente;
 import Estructura.TablaHash.TablaHash;
 import Entidad.Grafica;
 import Entidad.Cliente;
-import Modulo.Principal.Principal;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -71,17 +70,13 @@ public class MenuCliente extends javax.swing.JFrame {
         modificardpi = new javax.swing.JTextField();
         txtnacimiento = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Agregar");
@@ -162,13 +157,26 @@ public class MenuCliente extends javax.swing.JFrame {
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, -1, -1));
 
         jButton3.setText("Modificar");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, -1, -1));
         getContentPane().add(txtborrardpi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 210, -1));
         getContentPane().add(modificardpi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 190, -1));
         getContentPane().add(txtnacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 110, -1));
 
         jLabel16.setText("F. Nacimiento:");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        jButton4.setText("Buscar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
         jMenu1.setText("Archivo");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -197,7 +205,6 @@ public class MenuCliente extends javax.swing.JFrame {
         setJMenuBar(jMenuBar1);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -257,11 +264,26 @@ public class MenuCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        Principal ventana = new Principal();
-        ventana.show(true);
-        this.dispose();
-    }//GEN-LAST:event_formWindowClosing
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        Cliente mostrar=tablah.buscarCli(Integer.parseInt(modificardpi.getText()));
+        txtnombre2.setText(mostrar.getNombre());
+        txtapellido2.setText(mostrar.getApellido());
+        txttelefono2.setText(mostrar.getTelefono());
+        txtdireccion2.setText(mostrar.getDireccion());
+        txtnacimiento2.setText(mostrar.getNacimiento());
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        tablah.buscarCli(Integer.parseInt(modificardpi.getText())).setApellido(txtapellido2.getText());
+        tablah.buscarCli(Integer.parseInt(modificardpi.getText())).setNombre(txtnombre2.getText());
+        tablah.buscarCli(Integer.parseInt(modificardpi.getText())).setDireccion(txtdireccion2.getText());
+        tablah.buscarCli(Integer.parseInt(modificardpi.getText())).setTelefono(txttelefono2.getText());
+        tablah.buscarCli(Integer.parseInt(modificardpi.getText())).setGenero((String)jComboBox4.getSelectedItem());
+        tablah.buscarCli(Integer.parseInt(modificardpi.getText())).setNacimiento(txtnacimiento2.getText());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +325,7 @@ public class MenuCliente extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
