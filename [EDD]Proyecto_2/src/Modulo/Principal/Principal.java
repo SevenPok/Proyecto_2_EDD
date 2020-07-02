@@ -8,7 +8,6 @@ package Modulo.Principal;
 import Modulo.Cliente.MenuCliente;
 import Modulo.Conductor.MenuConductor;
 import Modulo.Vehiculo.MenuVehiculo;
-import Modulo.Viaje.MenuViaje;
 
 /**
  *
@@ -132,11 +131,6 @@ public class Principal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-        MenuViaje ventana = new MenuViaje();
-        ventana.show(true);
-        this.dispose();
-         == == == =
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MenuCliente ventana = new MenuCliente();
         ventana.show(true);
@@ -148,10 +142,6 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        Modulo.Viaje.MenuViaje ventana = new Modulo.Viaje.MenuViaje();
-        ventana.show(true);
-        this.dispose();
 
 
     }//GEN-LAST:event_jButton4ActionPerformed
