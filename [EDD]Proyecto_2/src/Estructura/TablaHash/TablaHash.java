@@ -113,7 +113,7 @@ public class TablaHash {
             if (Tabla[i] != null) {   
                 if (i == posicionenTabla(dpi)) {
                     ListaN aux = Tabla[i].lista.first;
-                    while(aux==null){
+                    while(aux!=null){
                         if(dpi== aux.dato.getDpi()){
                             return aux.dato;
                         }
