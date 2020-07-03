@@ -1,0 +1,12 @@
+digraph G {
+
+1351032999[label="Lugar: Sevilla\nTiempo: 1309"]
+1351032999->859448356
+859448356[label="Lugar: Granada\nTiempo: 1309"]
+859448356->735940693
+735940693[label="Lugar: Murcia\nTiempo: 1309"]
+735940693->959367847
+959367847[label="Lugar: Valencia\nTiempo: 1309"]
+
+
+}

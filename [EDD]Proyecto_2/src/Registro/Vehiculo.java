@@ -89,4 +89,8 @@ public class Vehiculo {
     public boolean isEmty() {
         return vehiculo.isEmpty();
     }
+
+    public String cadena() {
+        return vehiculo.cadena();
+    }
 }

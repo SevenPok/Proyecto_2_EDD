@@ -1,0 +1,123 @@
+digraph G {
+
+1054148308[label="Lugar: Madrid\nTiempo: 621"]
+1054148308->1733170903
+1733170903[label="Lugar: Zaragoza\nTiempo: 621"]
+1733170903->800544206
+800544206[label="Lugar: Barcelona\nTiempo: 621"]
+
+node[shape=record];
+subgraph clusterBTree { 
+
+	 node [shape=record];
+node [style=filled];
+node [fillcolor="#EEEEEE"];
+node [color="#8C8C8E"];
+edge [color="#31CEF0"]; 
+765885316[label="|p17lAf17|p25lAf25|p35lAf35|p43lAf43|"]799963815[label="|p11lAf11|p14lAf14|"]2134418963[label="|p0lAf0|p10lAf10|"]799963815->2134418963
+824083293[label="|p12lAf12|p13lAf13|"]799963815->824083293
+765885316->799963815
+804955297[label="|p15lAf15|p16lAf16|"]799963815->804955297
+1935509691[label="|p1lAf1|p22lAf22|"]1232056573[label="|p18lAf18|p19lAf19|"]1935509691->1232056573
+212784870[label="|p20lAf20|p21lAf21|"]1935509691->212784870
+765885316->1935509691
+1980478590[label="|p23lAf23|p24lAf24|"]1935509691->1980478590
+1770840660[label="|p2lAf2|p32lAf32|"]1565548480[label="|p26lAf26|p27lAf27|p28lAf28|p29lAf29|"]1770840660->1565548480
+666086250[label="|p30lAf30|p31lAf31|"]1770840660->666086250
+765885316->1770840660
+212882342[label="|p33lAf33|p34lAf34|"]1770840660->212882342
+35687974[label="|p38lAf38|p40lAf40|"]1565622269[label="|p36lAf36|p37lAf37|"]35687974->1565622269
+1736669126[label="|p39lAf39|p3lAf3|"]35687974->1736669126
+765885316->35687974
+1763714547[label="|p41lAf41|p42lAf42|"]35687974->1763714547
+Vehiculos->765885316
+1870120783[label="|p46lAf46|p5lAf5|"]965735371[label="|p44lAf44|p45lAf45|"]1870120783->965735371
+1162776187[label="|p47lAf47|p48lAf48|p49lAf49|p4lAf4|"]1870120783->1162776187
+765885316->1870120783
+757671068[label="|p6lAf6|p7lAf7|p8lAf8|p9lAf9|"]1870120783->757671068
+}
+node[shape=box]
+2146337068->2117792642
+2146337068->2091508532
+2117792642->1987560774
+2117792642->2146337068
+1987560774->2107366725
+1987560774->2117792642
+2107366725->1419020183
+2107366725->1987560774
+1419020183->1737981554
+1419020183->2107366725
+1737981554->797100595
+1737981554->1419020183
+797100595->2091508532
+797100595->1737981554
+2091508532->2146337068
+2091508532->797100595
+{rank=same;2146337068;2117792642;1987560774;2107366725;1419020183;1737981554;797100595;2091508532;}
+2146337068[label="DPI: 3005952367401"]
+2117792642[label="DPI: 7805544360001"]
+1987560774[label="DPI: 5004153267401"]
+2107366725[label="DPI: 3033988367401"]
+1419020183[label="DPI: 9805952367756"]
+1737981554[label="DPI: 1005957733221"]
+797100595[label="DPI: 4005952367401"]
+2091508532[label="DPI: 6005952367401"]
+
+rankdir = LR; 
+ node [shape=record];
+hashTable[label="<f0>0|<f1>1|<f2>2|<f3>3|<f4>4|<f5>5|<f6>6|<f7>7|<f8>8|<f9>9|<f10>10|<f11>11|<f12>12|<f13>13|<f14>14|<f15>15|<f16>16|<f17>17|<f18>18|<f19>19|<f20>20|<f21>21|<f22>22|<f23>23|<f24>24|<f25>25|<f26>26|<f27>27|<f28>28|<f29>29|<f30>30|<f31>31|<f32>32|<f33>33|<f34>34|<f35>35|<f36>36|<f37>37|"];
+node0 [label="<f0> 972101-Suki|"];
+node1 [label="<f0> 183410-Suki|"];
+node7 [label="<f0> 741228-Carson|"];
+node8 [label="<f0> 815673-Maris|"];
+node9 [label="<f0> 249537-Quinn|<f1> 181420-Zenaida|"];
+node10 [label="<f0> 410044-Declan|"];
+node11 [label="<f0> 835360-Jesse|"];
+node12 [label="<f0> 306594-Rachel|<f1> 570663-Edan|"];
+node14 [label="<f0> 283471-Carlos|"];
+node15 [label="<f0> 203071-Carlos|<f1> 312258-Richard|<f2> 351071-Carlos|"];
+node18 [label="<f0> 839622-Xander|"];
+node21 [label="<f0> 313374-Hayfa|"];
+node23 [label="<f0> 638273-Hector Mario|<f1> 39058-Richard|"];
+node24 [label="<f0> 123456-David Roberto|<f1> 129672-Ifeoma|"];
+node26 [label="<f0> 895389-Nathan|"];
+node27 [label="<f0> 950927-Maria Fernanda|"];
+node28 [label="<f0> 780432-Hayfa|<f1> 90308-Richard|"];
+node30 [label="<f0> 315677-Rahim|<f1> 101410-Suki|"];
+node31 [label="<f0> 323374-Hayfa|"];
+node33 [label="<f0> 660409-Shoshana|"];
+node34 [label="<f0> 331258-Richard|<f1> 286451-Carlos|"];
+node35 [label="<f0> 69410-Suki|"];
+node36 [label="<f0> 777147-Chadwick|"];
+hashTable:f0 -> node0:f0;
+hashTable:f1 -> node1:f0;
+hashTable:f7 -> node7:f0;
+hashTable:f8 -> node8:f0;
+hashTable:f9 -> node9:f0;
+hashTable:f10 -> node10:f0;
+hashTable:f11 -> node11:f0;
+hashTable:f12 -> node12:f0;
+hashTable:f14 -> node14:f0;
+hashTable:f15 -> node15:f0;
+hashTable:f18 -> node18:f0;
+hashTable:f21 -> node21:f0;
+hashTable:f23 -> node23:f0;
+hashTable:f24 -> node24:f0;
+hashTable:f26 -> node26:f0;
+hashTable:f27 -> node27:f0;
+hashTable:f28 -> node28:f0;
+hashTable:f30 -> node30:f0;
+hashTable:f31 -> node31:f0;
+hashTable:f33 -> node33:f0;
+hashTable:f34 -> node34:f0;
+hashTable:f35 -> node35:f0;
+hashTable:f36 -> node36:f0;
+
+node[shape=record];
+graph[pencolor=transparent];
+rankdir=LR;
+A34bb43b00c9b7c826f7d319ef18a628a[label="{<data> 34bb43b00c9b7c826f7d319ef18a628a| <next>}"];
+
+
+
+}

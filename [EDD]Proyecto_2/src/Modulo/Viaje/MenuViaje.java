@@ -182,8 +182,8 @@ public class MenuViaje extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-//        String o =blockchain.grafica(blockchain);
-//        Entidad.Grafica.graficar(o, "Blockchain");
+        String o =blockchain.grafica(blockchain);
+        Entidad.Grafica.graficar(o, "Blockchain");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

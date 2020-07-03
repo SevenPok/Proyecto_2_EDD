@@ -47,6 +47,24 @@ public class BTree<T extends Comparable<T>> {
 
     }
 
+    public String cadena() {
+        String cadena = "";
+        if (this.root != null) {
+            Grafica.cadena += "node[shape=record];\n" + "subgraph clusterBTree { \n"
+                    + "\n"
+                    + "	 node [shape=record];\n"
+                    + "node [style=filled];\n"
+                    + "node [fillcolor=\"#EEEEEE\"];\n"
+                    + "node [color=\"#8C8C8E\"];\n"
+                    + "edge [color=\"#31CEF0\"]; \n";
+            this.root.graficar("Vehiculos");
+            Grafica.cadena += "}";
+            cadena = Grafica.cadena;
+            Grafica.cadena = "";
+        }
+        return cadena;
+    }
+
     public void graficarLabel() {
         if (this.root != null) {
 

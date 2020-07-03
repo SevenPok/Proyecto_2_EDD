@@ -33,7 +33,7 @@ public class Ruta implements Comparable<Ruta> {
 
     @Override
     public String toString() {
-        return "Ruta{" + "lugar=" + lugar + ", tiempo=" + tiempo + '}';
+        return "Lugar: " + lugar + "\\nTiempo: " + tiempo;
     }
 
 }

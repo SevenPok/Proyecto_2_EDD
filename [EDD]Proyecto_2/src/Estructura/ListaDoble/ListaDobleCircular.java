@@ -154,6 +154,27 @@ public class ListaDobleCircular<T extends Comparable<T>> {
         }
     }
 
+    public String cadena() {
+        if (isEmpty()) {
+            System.out.println("Esta vacia la lista");
+        } else {
+            Nodo<T> aux = head;
+            String cadena = "node[shape=box]\n";
+            String alinear = "{rank=same;";
+            do {
+                cadena += aux.getData().hashCode() + "->" + aux.getNext().getData().hashCode() + "\n";
+                cadena += aux.getData().hashCode() + "->" + aux.getBack().getData().hashCode() + "\n";
+                alinear += aux.getData().hashCode() + ";";
+                aux = aux.getNext();
+            } while (aux != head);
+            alinear += "}\n";
+            cadena += alinear;
+            cadena += label();
+            return cadena;
+        }
+        return "";
+    }
+
     private String label() {
         if (isEmpty()) {
             System.out.println("Esta vacia la lista");

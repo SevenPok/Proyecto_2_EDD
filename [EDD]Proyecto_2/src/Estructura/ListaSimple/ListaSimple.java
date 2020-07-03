@@ -258,6 +258,21 @@ public class ListaSimple<T extends Comparable<T>> implements Iterable<T> {
         return cadena;
     }
 
+    public String graficar() {
+        String cadena = "";
+        if (!isEmpty()) {
+            Nodo<T> aux = head;
+            while (aux != null) {
+                cadena += aux.hashCode() + "[label=\"" + aux.getData().toString() + "\"]\n";
+                if (aux.getNext() != null) {
+                    cadena += aux.hashCode() + "->" + aux.getNext().hashCode() + "\n";
+                }
+                aux = aux.getNext();
+            }
+        }
+        return cadena;
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new MyIterator<ListaSimple>();

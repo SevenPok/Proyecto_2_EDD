@@ -3,7 +3,7 @@ package Entidad;
 import Estructura.Grafo.Vertice;
 import Estructura.ListaSimple.ListaSimple;
 
-public class Viaje {
+public class Viaje implements Comparable<Viaje> {
 
     private String origen;
     private String destino;
@@ -77,6 +77,19 @@ public class Viaje {
 
     public void setRuta(ListaSimple<Ruta> ruta) {
         this.ruta = ruta;
+    }
+
+    @Override
+    public String toString() {
+        return "Origen: " + origen + "\nDestino: " + destino + "\nCantidad: " + ruta.getSize() + "\n--------------------------------------\n";
+    }
+
+    @Override
+    public int compareTo(Viaje o) {
+        if (ruta.getSize() == o.getRuta().getSize()) {
+            return 0;
+        }
+        return -1;
     }
 
 }

@@ -91,4 +91,8 @@ public class Conductor {
         }
         return false;
     }
+
+    public String cadena() {
+        return conductor.cadena();
+    }
 }

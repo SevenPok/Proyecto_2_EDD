@@ -5,18 +5,25 @@
  */
 package Modulo.Viaje.Reporte;
 
+import Entidad.Grafica;
+import Entidad.Ruta;
+import Entidad.Viaje;
 import Estructura.BlockChain.ListaSimpleB;
+import Estructura.TablaHash.TablaHash;
 import Modulo.Principal.Principal;
 import Reporte.HuffmanEncoder;
 import Reporte.HuffmanEncoder.HuffmanEncoderResult;
 import java.awt.Desktop;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -46,7 +53,8 @@ public class Reporte extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtHuffman = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Viajes");
@@ -57,6 +65,11 @@ public class Reporte extends javax.swing.JFrame {
         });
 
         jButton1.setText("Estructura Completa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Top Viajes");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,18 +100,24 @@ public class Reporte extends javax.swing.JFrame {
         });
 
         jButton6.setText("Ruta Viaje");
-
-        jButton7.setText("Descomprimir");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
+
+        txtHuffman.setColumns(20);
+        txtHuffman.setRows(5);
+        jScrollPane1.setViewportView(txtHuffman);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -112,9 +131,7 @@ public class Reporte extends javax.swing.JFrame {
                         .addComponent(jButton3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton7)
-                            .addComponent(jButton5))
+                        .addComponent(jButton5)
                         .addGap(74, 74, 74)
                         .addComponent(jButton6)))
                 .addContainerGap(76, Short.MAX_VALUE))
@@ -132,8 +149,8 @@ public class Reporte extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jButton6)
                     .addComponent(jButton4))
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
+                .addGap(78, 78, 78)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -147,16 +164,22 @@ public class Reporte extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        String test = ListaSimpleB.getInstance().topViaje();
+        HuffmanEncoder encoder = new HuffmanEncoder();
+        HuffmanEncoderResult result = encoder.compress(test);
+        crearArchivo("TopViajes", result.getEncodedData());
+        txtHuffman.setText("");
+        txtHuffman.setText(encoder.decompress(result));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        crearArchivo("TopCliente", ListaSimpleB.getInstance().topCliente());
+        String test = ListaSimpleB.getInstance().topCliente();
+        HuffmanEncoder encoder = new HuffmanEncoder();
+        HuffmanEncoderResult result = encoder.compress(test);
+        crearArchivo("TopCliente", result.getEncodedData());
+        txtHuffman.setText("");
+        txtHuffman.setText(encoder.decompress(result));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -164,6 +187,8 @@ public class Reporte extends javax.swing.JFrame {
         HuffmanEncoder encoder = new HuffmanEncoder();
         HuffmanEncoderResult result = encoder.compress(test);
         crearArchivo("TopConductores", result.getEncodedData());
+        txtHuffman.setText("");
+        txtHuffman.setText(encoder.decompress(result));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -171,7 +196,61 @@ public class Reporte extends javax.swing.JFrame {
         HuffmanEncoder encoder = new HuffmanEncoder();
         HuffmanEncoderResult result = encoder.compress(test);
         crearArchivo("TopVehiculo", result.getEncodedData());
+        txtHuffman.setText("");
+        txtHuffman.setText(encoder.decompress(result));
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        String llave = JOptionPane.showInputDialog("Ingrese llave");
+        Viaje viaje = ListaSimpleB.getInstance().buscarViaje(ListaSimpleB.getMD5(llave));
+        if (viaje != null) {
+            String cadena = viaje.getRuta().graficar();
+            Grafica.graficar(cadena, "LLave");
+        } else {
+
+        }
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String cadena = "";
+        String llave = JOptionPane.showInputDialog("Ingrese llave");
+        Viaje viaje = ListaSimpleB.getInstance().buscarViaje(ListaSimpleB.getMD5(llave));
+        if (viaje != null) {
+            cadena += viaje.getRuta().graficar() + "\n";
+            cadena += Registro.Vehiculo.getRegistro().cadena() + "\n";
+            cadena += Registro.Conductor.getRegistro().cadena() + "\n";
+            cadena += TablaHash.getInstance().graficar(TablaHash.getInstance()) + "\n";
+            cadena += ListaSimpleB.getInstance().grafica(ListaSimpleB.getInstance()) + "\n";
+            Grafica.graficar(cadena, "General");
+        } else {
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void descomprimir(int i, JTextArea text) {
+        HuffmanEncoder encoder = new HuffmanEncoder();
+        HuffmanEncoderResult result = null;
+        switch (i) {
+            case 1:
+                result = encoder.compress(ListaSimpleB.getInstance().topCliente());
+                break;
+            case 2:
+                result = encoder.compress(ListaSimpleB.getInstance().topVehiculo());
+                break;
+            case 3:
+                result = encoder.compress(ListaSimpleB.getInstance().topConductor());
+                break;
+            case 4:
+                result = encoder.compress(ListaSimpleB.getInstance().topViaje());
+                break;
+            default:
+                break;
+        }
+        try {
+            text.setText(encoder.decompress(result));
+        } catch (Exception e) {
+        }
+    }
 
     private void crearArchivo(String nombre, String cadena) {
         String archivo = nombre + ".edd";
@@ -235,6 +314,7 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea txtHuffman;
     // End of variables declaration//GEN-END:variables
 }
